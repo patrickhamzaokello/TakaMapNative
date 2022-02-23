@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "265387690967",
+    "project_id": "taka-map-518bb",
+    "storage_bucket": "taka-map-518bb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:265387690967:android:8072e80d8c643403081992",
+        "android_client_info": {
+          "package_name": "com.pkasemer.takamap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "265387690967-to8lef314a3mv5j3upgvietuq812r8d5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAM4ueq-xMmTbdx0YiUXQmga17FTN4an30"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "265387690967-to8lef314a3mv5j3upgvietuq812r8d5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

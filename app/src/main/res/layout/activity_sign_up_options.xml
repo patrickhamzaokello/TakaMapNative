@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:background="@drawable/optiontwo"
+    android:orientation="vertical"
+    android:scaleType="fitXY"
+    android:gravity="center_vertical"
+    tools:context=".SignUpOptions">
+
+
+
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:fontFamily="@font/montserrat_bold"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:text="Zodongo Foods"
+        />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center"
+        android:text="Fast and Reliable Food &amp; Drinks Delivery Service.  "
+        android:textColor="@color/light_black"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/login_screen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="#000000"
+        android:textAllCaps="false"
+        android:text="Login"
+        android:textColor="#fff"
+        android:transitionName="account_button"
+
+        />
+
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/register_btn"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:transitionName="account_change"
+        android:text="Sign up with email"
+        android:textAllCaps="false"
+        android:textColor="@color/purple_500"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="@color/purple_500"
+        app:strokeWidth="1dp" />
+
+
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/light_black"
+        android:textSize="12dp"
+        android:gravity="center"
+        android:fontFamily="@font/montserrat"
+        android:text="By continuing you indicate that you agree to Zodongo Food's  Terms of Service and Privacy Policy"
+        />
+    <TextView
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/light_black"
+        android:textSize="12dp"
+        android:gravity="center"
+        android:fontFamily="@font/montserrat"
+        android:text="Learn more @ zodongofoods.com, 2022"
+        />
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/light_black"
+        android:textSize="5dp"
+        android:gravity="center"
+        android:fontFamily="@font/montserrat"
+        android:text="Powered by PK"
+        />
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>
