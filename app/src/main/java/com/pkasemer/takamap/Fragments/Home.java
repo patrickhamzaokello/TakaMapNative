@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -34,6 +35,7 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.pkasemer.takamap.Adapters.UserOrdersAdapter;
 import com.pkasemer.takamap.Apis.MovieApi;
@@ -167,6 +169,20 @@ public class Home extends Fragment {
                 googleMap.getUiSettings().setMyLocationButtonEnabled(true);
                 googleMap.getUiSettings().setAllGesturesEnabled(true);
                 googleMap.getUiSettings().setZoomControlsEnabled(true);
+
+                try {
+                    // Customise the styling of the base map using a JSON object defined
+                    // in a raw resource file.
+                    boolean success = googleMap.setMapStyle(
+                            MapStyleOptions.loadRawResourceStyle(
+                                    getContext(), R.raw.style));
+
+                    if (!success) {
+                        Log.e(TAG, "Style parsing failed.");
+                    }
+                } catch (Resources.NotFoundException e) {
+                    Log.e(TAG, "Can't find style.", e);
+                }
             }
         } else {
             if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {

@@ -40,7 +40,7 @@
 
     <string name="cartcoutAction">cartmsg</string>
     <string name="cartCount">cartcount</string>
-    <string name="google_maps_key">AIzaSyB9MxxJBmzLHdfsMEZSdV0vORR_MRwirPI</string>
+    <string name="google_maps_key">AIzaSyAM4ueq-xMmTbdx0YiUXQmga17FTN4an30</string>
     <string name="i_am_here">I am Here</string>
     <string name="provider_failed">Location turned off</string>
 </resources>
