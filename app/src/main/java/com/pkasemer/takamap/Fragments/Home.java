@@ -2,20 +2,28 @@ package com.pkasemer.takamap.Fragments;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -33,9 +41,11 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.pkasemer.takamap.Adapters.UserOrdersAdapter;
 import com.pkasemer.takamap.Apis.MovieApi;
@@ -49,6 +59,8 @@ import com.pkasemer.takamap.Models.UserOrdersResult;
 import com.pkasemer.takamap.R;
 import com.pkasemer.takamap.RootActivity;
 import com.pkasemer.takamap.Utils.PaginationScrollListener;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 import java.util.concurrent.TimeoutException;
@@ -78,6 +90,7 @@ public class Home extends Fragment {
     private int currentPage = PAGE_START;
 
     private MovieService movieService;
+    List<Infrastructure> all_infrastructures;
 
 
     private LocationListener locationListener = new LocationListener() {
@@ -235,31 +248,17 @@ public class Home extends Fragment {
         if (this.googleMap != null) {
 //            googleMap.clear();
             LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-            MarkerOptions markerOptions = new MarkerOptions();
-            markerOptions.position(latLng);
-            markerOptions.title(title);
-            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-            googleMap.addMarker(markerOptions);
+//            MarkerOptions markerOptions = new MarkerOptions();
+//            markerOptions.position(latLng);
+//            markerOptions.title(title);
+//            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+//            googleMap.addMarker(markerOptions);
             googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-//            googleMap.animateCamera(CameraUpdateFactory.zoomTo(17));
-            googleMap.animateCamera(CameraUpdateFactory.zoomTo(12.0f));
+            googleMap.animateCamera(CameraUpdateFactory.zoomTo(14.8f));
 
         }
     }
 
-
-//    private void doRefresh() {
-//        progressBar.setVisibility(View.VISIBLE);
-//        if (callUserOrdersApi().isExecuted())
-//            callUserOrdersApi().cancel();
-//
-//        // TODO: Check if data is stale.
-//        //  Execute network request if cache is expired; otherwise do not update data.
-//        adapter.getMovies().clear();
-//        adapter.notifyDataSetChanged();
-//        loadFirstPage();
-//        swipeRefreshLayout.setRefreshing(false);
-//    }
 
     private void loadFirstPage() {
 
@@ -281,7 +280,10 @@ public class Home extends Fragment {
 //                    if infrastructures are available
                     Log.i("inf_available", String.valueOf(infrastructures));
 
-                    initMarker(infrastructures);
+                    all_infrastructures = infrastructures;
+
+                    initMarker(all_infrastructures);
+
                 }
 
             }
@@ -301,12 +303,69 @@ public class Home extends Fragment {
             //set latlng nya
             LatLng location = new LatLng(Double.parseDouble(listData.get(i).getLatitude()), Double.parseDouble(listData.get(i).getLongitude()));
             //tambahkan markernya
-            googleMap.addMarker(new MarkerOptions().position(location).title(listData.get(i).getType()));
+            if((listData.get(i).getType()).equals("big banks")){
+                googleMap.addMarker(new MarkerOptions().position(location).zIndex(i).title(listData.get(i).getType()).icon(bitmapDescriptor(getContext(), R.drawable.ic_dashicons_trash)));
+
+            } else {
+                googleMap.addMarker(new MarkerOptions().position(location).zIndex(i).title(listData.get(i).getType()).icon(bitmapDescriptor(getContext(), R.drawable.ic_heroicons_outline_trash__1_)));
+
+            }
             //set latlng index ke 0
             LatLng latLng = new LatLng(Double.parseDouble(listData.get(0).getLatitude()), Double.parseDouble(listData.get(0).getLongitude()));
             //lalu arahkan zooming ke marker index ke 0
-            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latLng.latitude,latLng.longitude), 11.0f));
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latLng.latitude,latLng.longitude), 14.0f));
         }
+
+        // adding on click listener to marker of google maps.
+        googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                // on marker click we are getting the title of our marker
+                // which is clicked and displaying it in a toast message.
+                int markerId = (int) marker.getZIndex();
+                showDialog(listData.get(markerId));
+                return false;
+            }
+        });
+    }
+
+
+
+    private void showDialog(Infrastructure infrastructure) {
+
+        final Dialog dialog = new Dialog(getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.fragment_show_round_dialog);
+
+        TextView type_text = dialog.findViewById(R.id.type_text);
+        TextView aim_lable = dialog.findViewById(R.id.aim_lable);
+        TextView latittude = dialog.findViewById(R.id.latittude);
+        TextView longitude = dialog.findViewById(R.id.longitude);
+        TextView waste_infras_desc = dialog.findViewById(R.id.waste_infras_desc);
+
+        type_text.setText(infrastructure.getType());
+        aim_lable.setText(infrastructure.getAim());
+        latittude.setText("Lat: " + infrastructure.getLatitude());
+        longitude.setText("Long: " + infrastructure.getLongitude());
+        waste_infras_desc.setText(infrastructure.getDescription());
+
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
+
+    }
+
+
+    private BitmapDescriptor bitmapDescriptor(Context context, int resourceId){
+        Drawable vectordrawable = ContextCompat.getDrawable(context, resourceId);
+        vectordrawable.setBounds(0,0,vectordrawable.getIntrinsicWidth(), vectordrawable.getIntrinsicHeight());
+        Bitmap bitmap = Bitmap.createBitmap(vectordrawable.getIntrinsicWidth(), vectordrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        vectordrawable.draw(canvas);
+        return BitmapDescriptorFactory.fromBitmap(bitmap);
     }
 
 

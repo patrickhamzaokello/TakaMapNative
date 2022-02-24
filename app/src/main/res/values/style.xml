@@ -46,18 +46,9 @@
     </style>
 
 
-    <style name="BottomSheet" parent="@style/Widget.Design.BottomSheet.Modal">
-
-        <item name="android:typeface">monospace</item>
-        <item name="android:background">@drawable/cornercircle</item>
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
     </style>
-
-    <style name="BaseBottomSheetDialog" parent="@style/Theme.Design.Light.BottomSheetDialog">
-        <item name="android:windowIsFloating">false</item>
-        <item name="android:typeface">monospace</item>
-        <item name="bottomSheetStyle">@style/BottomSheet</item>
-    </style>
-
-    <style name="BottomSheetDialogTheme" parent="BaseBottomSheetDialog" />
 
 </resources>

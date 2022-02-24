@@ -319,8 +319,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_clarity_talk_bubbles_solid_badged" />
-                            <entry key="sourceFile" value="C:\Users\KaKebe\Downloads\clarity_talk-bubbles-solid-badged.svg" />
+                            <entry key="outputName" value="ic_dashicons_trash" />
+                            <entry key="sourceFile" value="C:\Users\KaKebe\Downloads\dashicons_trash.svg" />
                           </map>
                         </option>
                       </PersistentState>

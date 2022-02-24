@@ -2,26 +2,112 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:theme="@style/BottomSheetDialogTheme"
+    android:paddingHorizontal="20dp"
+    android:paddingVertical="20dp"
+    android:background="@drawable/cornercircle"
     android:orientation="vertical">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/home_addToCart"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="20dp"
-        android:layout_centerVertical="true"
-        android:layout_gravity="center"
-        android:clipToPadding="false"
-        android:scaleType="fitXY"
-        app:cardCornerRadius="100dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        >
 
-        <ImageView
-            android:id="@+id/profile_image"
+
+        <TextView
+            android:id="@+id/type_lable"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/zodongo_user_profile" />
-    </androidx.cardview.widget.CardView>
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:fontFamily="@font/montserrat_bold"
+            android:gravity="left"
+            android:includeFontPadding="false"
+            android:text="Type"
+            android:layout_marginBottom="5dp"
+            android:textColor="#000"
+            android:textSize="15sp" />
+
+
+        <TextView
+            android:id="@+id/type_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/type_lable"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="20dp"
+            android:fontFamily="@font/montserrat"
+            android:gravity="left"
+            android:includeFontPadding="false"
+            android:text="Recycling Hub"
+            android:textColor="@color/light_black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/aim_lable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/type_lable"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@+id/type_text"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center_vertical"
+            android:includeFontPadding="false"
+            android:text="School"
+            android:textColor="@color/purple_200"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        >
+
+
+        <TextView
+            android:id="@+id/location_lable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:fontFamily="@font/montserrat_bold"
+            android:gravity="left"
+            android:includeFontPadding="false"
+            android:text="Location Coordinates"
+            android:textColor="#000"
+            android:textSize="15sp" />
+
+
+        <TextView
+            android:id="@+id/latittude"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/location_lable"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="10dp"
+            android:fontFamily="@font/montserrat"
+            android:gravity="left"
+            android:layout_marginTop="5dp"
+            android:includeFontPadding="false"
+            android:text="latitude: 29.7059444"
+            android:textColor="@color/light_black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/longitude"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/latittude"
+            android:fontFamily="@font/montserrat"
+            android:gravity="left"
+            android:includeFontPadding="false"
+            android:text="Longitude: 29.7059444"
+            android:textColor="@color/light_black"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
 
     <TextView
         android:id="@+id/section_label"
@@ -29,27 +115,25 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/section_show_all_button"
         android:layout_alignParentLeft="true"
-        android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/montserrat_bold"
-        android:gravity="center"
+        android:gravity="left"
+        android:layout_marginBottom="5dp"
         android:includeFontPadding="false"
-        android:text="Thank you for  your Order!"
+        android:text="Description"
         android:textColor="#000"
-        android:textSize="18sp" />
+        android:textSize="15sp" />
 
 
     <TextView
-        android:id="@+id/section_label_desc"
+        android:id="@+id/waste_infras_desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/section_label"
         android:layout_alignParentLeft="true"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="8dp"
         android:layout_marginBottom="30dp"
         android:fontFamily="@font/montserrat"
-        android:gravity="center"
+        android:gravity="left"
         android:includeFontPadding="false"
         android:text="Your meal order has been placed successfully. We are currently processing it now and you will get a call to confirm your order."
         android:textColor="@color/light_black"
@@ -61,30 +145,14 @@
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:text="View Order"
+        android:text="Report Issue"
         android:textColor="@color/purple_500"
         android:transitionName="account_change"
         app:layout_constraintStart_toStartOf="parent"
         app:strokeColor="@color/purple_500"
         app:strokeWidth="1dp" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnStartOrder"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="40dp"
-        android:backgroundTint="@color/purple_200"
-        android:fontFamily="@font/montserrat_bold"
-        android:gravity="center"
-        android:text="Start New Order"
-        android:textColor="@color/white"
-        app:iconTint="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:strokeWidth="0dp" />
+
 
 
 </LinearLayout>
