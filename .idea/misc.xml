@@ -5,11 +5,15 @@
       <map>
         <entry key="..\:/Users/KaKebe/AndroidStudioProjects/TakaMap/app/src/main/res/drawable/bottomsheetbg.xml" value="0.1235" />
         <entry key="..\:/Users/KaKebe/AndroidStudioProjects/TakaMap/app/src/main/res/drawable/cornercircle.xml" value="0.1" />
+        <entry key="..\:/Users/KaKebe/AndroidStudioProjects/TakaMap/app/src/main/res/drawable/custom_filter_btn.xml" value="0.15" />
+        <entry key="..\:/Users/KaKebe/AndroidStudioProjects/TakaMap/app/src/main/res/drawable/green_roundedcorners.xml" value="0.1" />
         <entry key="..\:/Users/KaKebe/AndroidStudioProjects/TakaMap/app/src/main/res/layout/activity_place_order.xml" value="0.15353260869565216" />
+        <entry key="..\:/Users/KaKebe/AndroidStudioProjects/TakaMap/app/src/main/res/layout/activity_splash_activity.xml" value="0.16032608695652173" />
         <entry key="..\:/Users/KaKebe/AndroidStudioProjects/TakaMap/app/src/main/res/layout/fragment_cart.xml" value="0.15353260869565216" />
         <entry key="..\:/Users/KaKebe/AndroidStudioProjects/TakaMap/app/src/main/res/layout/fragment_home.xml" value="0.15353260869565216" />
         <entry key="..\:/Users/KaKebe/AndroidStudioProjects/TakaMap/app/src/main/res/layout/fragment_search.xml" value="0.15353260869565216" />
         <entry key="..\:/Users/KaKebe/AndroidStudioProjects/TakaMap/app/src/main/res/layout/fragment_show_round_dialog.xml" value="0.5" />
+        <entry key="..\:/Users/KaKebe/AndroidStudioProjects/TakaMap/app/src/main/res/layout/fragment_trash.xml" value="0.22" />
         <entry key="..\:/Users/KaKebe/AndroidStudioProjects/TakaMap/app/src/main/res/layout/order_recommend_layout.xml" value="0.15353260869565216" />
         <entry key="..\:/Users/KaKebe/AndroidStudioProjects/TakaMap/app/src/main/res/layout/pagination_item_progress.xml" value="0.15353260869565216" />
         <entry key="..\:/Users/KaKebe/AndroidStudioProjects/TakaMap/app/src/main/res/layout/search_pagination_item_list.xml" value="0.15353260869565216" />

@@ -21,9 +21,9 @@
 
     <fragment
         android:id="@+id/navigation_search"
-        android:name="com.pkasemer.takamap.Fragments.Search"
+        android:name="com.pkasemer.takamap.Fragments.Trash"
         android:label="@string/title_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_trash" />
 
     <fragment
         android:id="@+id/navigation_profile"

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="Fragments.Trash">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidetop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.02" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineleft"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.04" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineright"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.96" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelinebottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.98" />
+
+
+                <ImageView
+                    android:id="@+id/my_avatar_imageview"
+                    android:layout_width="0dp"
+                    android:layout_height="256dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/green_roundedcorners"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelineright"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/guidelineleft"
+                    app:layout_constraintTop_toTopOf="@+id/guidetop" />
+
+
+                <Button
+                    android:id="@+id/loadimagesourcebtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="Upload"
+                    android:textColor="@color/white"
+                    app:layout_constraintTop_toBottomOf="@+id/uploadimageiconview"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                  />
+
+
+
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/uploadimageiconview"
+                    android:layout_width="0dp"
+                    android:layout_height="256dp"
+                    app:layout_constraintEnd_toEndOf="@id/my_avatar_imageview"
+                    app:layout_constraintStart_toStartOf="@id/my_avatar_imageview"
+                    app:layout_constraintTop_toTopOf="@id/guidetop">
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.1" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.9" />
+
+
+                    <TextView
+                        android:id="@+id/uploadimagetext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:gravity="center"
+                        android:text="Tap to Upload an Image"
+                        android:textColor="#575757"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toTopOf="@+id/uploadimagealttext"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+
+                    <TextView
+                        android:id="@+id/uploadimagealttext"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/montserrat"
+                        android:gravity="center"
+                        android:paddingHorizontal="20dp"
+                        android:text="you can upload an image from your photo library or by taking an image using your camera"
+                        android:textColor="#575757"
+                        app:layout_constraintBottom_toTopOf="@+id/guideline9"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+
+                        />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+</FrameLayout>
