@@ -20,188 +20,111 @@
             android:orientation="vertical">
 
 
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:scaleType="fitCenter"
-                android:src="@drawable/zodongo_request"/>
-
-            <TextView
-                android:id="@+id/register_welcomeback"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="Request Trash Pick up"
-                android:textColor="#000"
-                android:textSize="22sp"
-                android:layout_marginTop="-20dp"
-                android:includeFontPadding="false"
-                android:transitionName="logo_text"
-
-                />
-
-            <TextView
-                android:id="@+id/register_subtext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat"
-                android:includeFontPadding="false"
-                android:layout_marginTop="5dp"
-                android:textColor="@color/light_black"
-                android:text="Provide details including picture of the trash and we shall reach out to you ASAP"
-                android:textSize="15sp"
-                android:layout_marginBottom="25dp"
-                android:transitionName="logo_desc" />
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/login_username"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:hint="Location"
-                app:hintTextColor="@color/black"
-                android:textColorHint="@color/black"
-                app:boxStrokeColor="@color/black"
-                app:boxStrokeErrorColor="@color/purple_500"
-                android:transitionName="username_input"
-                app:counterMaxLength="15">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/inputTextUsername"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:textColor="@color/black"
-
-                    />
+                android:layout_height="wrap_content">
 
 
-            </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:id="@+id/manageOrders"
+                    android:layout_height="125dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="@color/cards"
+                    app:cardCornerRadius="5dp">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/login_user_phone"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                app:hintTextColor="@color/black"
-                android:textColorHint="@color/black"
-                app:boxStrokeColor="@color/black"
-                android:layout_marginBottom="20dp"
-                app:boxStrokeErrorColor="@color/purple_500"
-                android:hint="Phone Number">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/inputTextPhone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-
-                    android:inputType="phone" />
-
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="256dp">
-
-                <ImageView
-                    android:id="@+id/my_avatar_imageview"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/green_roundedcorners"
-                    android:scaleType="centerCrop"
-                    app:layout_constraintHorizontal_bias="1.0" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentBottom="true"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/uploadimagetext"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:fontFamily="@font/montserrat_bold"
-                        android:gravity="center"
-                        android:text="Tap to Upload an Image"
-                        android:textColor="#575757"
-                        android:textSize="18sp"
-                        app:layout_constraintBottom_toTopOf="@+id/uploadimagealttext"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center_vertical"
+                        android:padding="5dp">
 
 
-                    <TextView
-                        android:id="@+id/uploadimagealttext"
+
+                        <TextView
+                            android:id="@+id/wallet_labels"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:includeFontPadding="false"
+                            android:text="Pick Up"
+                            android:textColor="@color/cardtitle"
+                            android:textSize="20sp" />
+
+
+                        <TextView
+                            android:id="@+id/wallet_descs"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/wallet_labels"
+                            android:fontFamily="@font/montserrat"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:layout_marginTop="8dp"
+                            android:includeFontPadding="false"
+                            android:text="Request for a Trash / Yugi Pick-Up or Collection "
+                            android:textColor="@color/carddescript"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="125dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="@color/cards"
+                    app:cardCornerRadius="5dp"
+
+                    >
+
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="10dp"
-                        android:fontFamily="@font/montserrat"
-                        android:gravity="center"
-                        android:paddingHorizontal="20dp"
-                        android:text="you can upload an image from your photo library or by taking an image using your camera"
-                        android:textColor="#575757"
-                        app:layout_constraintBottom_toTopOf="@+id/guideline9"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-
-                        />
-                </LinearLayout>
-
-
-            </RelativeLayout>
-
-
-            <Button
-                android:id="@+id/loadimagesourcebtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                android:text="Upload"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/uploadimageiconview" />
-
-
-            <Button
-                android:id="@+id/register_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"
-                android:background="#000000"
-                android:text="Submit"
-                android:textColor="#fff"
-                android:transitionName="account_button"
-
-                />
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center_vertical"
+                        android:padding="5dp">
 
 
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/login_screen"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:transitionName="account_change"
-                android:text="Clear"
-                android:layout_marginBottom="30dp"
-                android:textColor="@color/purple_500"
-                app:layout_constraintStart_toStartOf="parent"
-                app:strokeColor="@color/purple_500"
-                app:strokeWidth="1dp" />
+                        <TextView
+                            android:id="@+id/wallet_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:includeFontPadding="false"
+                            android:text="Report"
+                            android:textColor="@color/cardtitle"
+                            android:textSize="20sp" />
+
+
+                        <TextView
+                            android:id="@+id/wallet_credit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/wallet_labels"
+                            android:fontFamily="@font/montserrat"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:layout_marginTop="8dp"
+                            android:includeFontPadding="false"
+                            android:text="Report any Issue about Trash / Yugi"
+                            android:textColor="@color/carddescript"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
 
         </LinearLayout>
 
