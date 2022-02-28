@@ -16,98 +16,118 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:orientation="vertical">
 
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:src="@drawable/zodongo_request"/>
+
+            <TextView
+                android:id="@+id/register_welcomeback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Request Trash Pick up"
+                android:textColor="#000"
+                android:textSize="22sp"
+                android:layout_marginTop="-20dp"
+                android:includeFontPadding="false"
+                android:transitionName="logo_text"
+
+                />
+
+            <TextView
+                android:id="@+id/register_subtext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:includeFontPadding="false"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/light_black"
+                android:text="Provide details including picture of the trash and we shall reach out to you ASAP"
+                android:textSize="15sp"
+                android:layout_marginBottom="25dp"
+                android:transitionName="logo_desc" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/login_username"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:hint="Location"
+                app:hintTextColor="@color/black"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@color/black"
+                app:boxStrokeErrorColor="@color/purple_500"
+                android:transitionName="username_input"
+                app:counterMaxLength="15">
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guidetop"
-                    android:layout_width="wrap_content"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputTextUsername"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.02" />
+                    android:inputType="text"
+                    android:textColor="@color/black"
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guidelineleft"
-                    android:layout_width="wrap_content"
+                    />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/login_user_phone"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:hintTextColor="@color/black"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@color/black"
+                android:layout_marginBottom="20dp"
+                app:boxStrokeErrorColor="@color/purple_500"
+                android:hint="Phone Number">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputTextPhone"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.04" />
+                    android:textColor="@color/black"
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guidelineright"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.96" />
+                    android:inputType="phone" />
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guidelinebottom"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.98" />
 
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="256dp">
 
                 <ImageView
                     android:id="@+id/my_avatar_imageview"
-                    android:layout_width="0dp"
-                    android:layout_height="256dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:adjustViewBounds="true"
                     android:background="@drawable/green_roundedcorners"
                     android:scaleType="centerCrop"
-                    app:layout_constraintEnd_toStartOf="@+id/guidelineright"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="@+id/guidelineleft"
-                    app:layout_constraintTop_toTopOf="@+id/guidetop" />
+                    app:layout_constraintHorizontal_bias="1.0" />
 
-
-                <Button
-                    android:id="@+id/loadimagesourcebtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:text="Upload"
-                    android:textColor="@color/white"
-                    app:layout_constraintTop_toBottomOf="@+id/uploadimageiconview"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="20dp"
-                  />
-
-
-
-
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/uploadimageiconview"
-                    android:layout_width="0dp"
-                    android:layout_height="256dp"
-                    app:layout_constraintEnd_toEndOf="@id/my_avatar_imageview"
-                    app:layout_constraintStart_toStartOf="@id/my_avatar_imageview"
-                    app:layout_constraintTop_toTopOf="@id/guidetop">
-
-                    <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/guideline8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        app:layout_constraintGuide_percent="0.1" />
-
-                    <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/guideline9"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        app:layout_constraintGuide_percent="0.9" />
-
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/uploadimagetext"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/montserrat_bold"
@@ -122,8 +142,9 @@
 
                     <TextView
                         android:id="@+id/uploadimagealttext"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
                         android:layout_marginBottom="10dp"
                         android:fontFamily="@font/montserrat"
                         android:gravity="center"
@@ -135,14 +156,52 @@
                         app:layout_constraintStart_toStartOf="parent"
 
                         />
+                </LinearLayout>
 
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+            </RelativeLayout>
 
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/loadimagesourcebtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Upload"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/uploadimageiconview" />
 
 
+            <Button
+                android:id="@+id/register_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:background="#000000"
+                android:text="Submit"
+                android:textColor="#fff"
+                android:transitionName="account_button"
+
+                />
+
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/login_screen"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:transitionName="account_change"
+                android:text="Clear"
+                android:layout_marginBottom="30dp"
+                android:textColor="@color/purple_500"
+                app:layout_constraintStart_toStartOf="parent"
+                app:strokeColor="@color/purple_500"
+                app:strokeWidth="1dp" />
 
         </LinearLayout>
 

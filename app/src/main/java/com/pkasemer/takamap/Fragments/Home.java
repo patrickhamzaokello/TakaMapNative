@@ -254,7 +254,7 @@ public class Home extends Fragment {
 //            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
 //            googleMap.addMarker(markerOptions);
             googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-            googleMap.animateCamera(CameraUpdateFactory.zoomTo(14.8f));
+            googleMap.animateCamera(CameraUpdateFactory.zoomTo(12.8f));
 
         }
     }
@@ -311,9 +311,9 @@ public class Home extends Fragment {
 
             }
             //set latlng index ke 0
-            LatLng latLng = new LatLng(Double.parseDouble(listData.get(0).getLatitude()), Double.parseDouble(listData.get(0).getLongitude()));
+//            LatLng latLng = new LatLng(Double.parseDouble(listData.get(0).getLatitude()), Double.parseDouble(listData.get(0).getLongitude()));
             //lalu arahkan zooming ke marker index ke 0
-            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latLng.latitude,latLng.longitude), 14.0f));
+//            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latLng.latitude,latLng.longitude), 14.0f));
         }
 
         // adding on click listener to marker of google maps.

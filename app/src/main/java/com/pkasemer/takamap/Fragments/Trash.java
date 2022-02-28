@@ -40,7 +40,6 @@ public class Trash extends Fragment {
     private ImageView imageView;
     Button  btnLoadimage;
     private Bitmap bitmap;
-    private ConstraintLayout uploadimageiconview;
     Uri imageUri;
 
     public Trash() {
@@ -71,8 +70,6 @@ public class Trash extends Fragment {
 
 
         //show uploadimageiconview
-        uploadimageiconview = view.findViewById(R.id.uploadimageiconview);
-        uploadimageiconview.setVisibility(View.VISIBLE);
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -194,7 +191,7 @@ public class Trash extends Fragment {
                         bitmap = (Bitmap) data.getExtras().get("data");
                         imageView.setVisibility(View.VISIBLE);
                         imageView.setImageBitmap(bitmap);
-                        uploadimageiconview.setVisibility(View.GONE);
+//                        uploadimageiconview.setVisibility(View.GONE);
                         btnLoadimage.setVisibility(View.VISIBLE);
                         // CALL THIS METHOD TO GET THE URI FROM THE BITMAP
                         Uri tempUri = getImageUri(getActivity().getApplicationContext().getApplicationContext(), bitmap);
@@ -217,7 +214,7 @@ public class Trash extends Fragment {
                                 bitmap = BitmapFactory.decodeFile(picturePath);
                                 imageView.setVisibility(View.VISIBLE);
                                 imageView.setImageBitmap(bitmap);
-                                uploadimageiconview.setVisibility(View.GONE);
+//                                uploadimageiconview.setVisibility(View.GONE);
                                 btnLoadimage.setVisibility(View.VISIBLE);
 
 
