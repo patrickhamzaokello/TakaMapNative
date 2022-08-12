@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -30,6 +31,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -37,6 +40,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestBuilder;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.FutureTarget;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.CustomTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -47,6 +57,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.ImageSize;
+import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 import com.pkasemer.takamap.Adapters.UserOrdersAdapter;
 import com.pkasemer.takamap.Apis.MovieApi;
 import com.pkasemer.takamap.Apis.MovieService;
@@ -62,7 +75,13 @@ import com.pkasemer.takamap.Utils.PaginationScrollListener;
 
 import org.w3c.dom.Text;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
 import retrofit2.Call;
@@ -90,6 +109,7 @@ public class Home extends Fragment {
     private int currentPage = PAGE_START;
 
     private MovieService movieService;
+    private ImageLoader imageLoader;
     List<Infrastructure> all_infrastructures;
 
 
@@ -297,19 +317,38 @@ public class Home extends Fragment {
         });
     }
 
-    private void initMarker(List<Infrastructure> listData){
+    private void initMarker(List<Infrastructure> listData) {
         //iterasi semua data dan tampilkan markernya
-        for (int i=0; i<listData.size(); i++){
+        for (int i = 0; i < listData.size(); i++) {
             //set latlng nya
             LatLng location = new LatLng(Double.parseDouble(listData.get(i).getLatitude()), Double.parseDouble(listData.get(i).getLongitude()));
             //tambahkan markernya
-            if((listData.get(i).getType()).equals("big banks")){
-                googleMap.addMarker(new MarkerOptions().position(location).zIndex(i).title(listData.get(i).getType()).icon(bitmapDescriptor(getContext(), R.drawable.ic_dashicons_trash)));
 
-            } else {
-                googleMap.addMarker(new MarkerOptions().position(location).zIndex(i).title(listData.get(i).getType()).icon(bitmapDescriptor(getContext(), R.drawable.ic_heroicons_outline_trash__1_)));
+            int finalI = i;
+            Glide.with(this)
+                    .applyDefaultRequestOptions(new RequestOptions()
+                            .override(60, 60)
+                            .placeholder(R.drawable.ic_dashicons_trash)
+                            .error(R.drawable.ic_dashicons_trash))
+                    .asBitmap()
+                    .load(listData.get(i).getIconpath())
+                    .into(new CustomTarget<Bitmap>() {
+                        @Override
+                        public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                            googleMap.addMarker(
+                                    new MarkerOptions()
+                                            .position(location)
+                                            .zIndex(finalI)
+                                            .title(listData.get(finalI).getType())
+                                            .icon(BitmapDescriptorFactory.fromBitmap(resource)));
+                        }
 
-            }
+                        @Override
+                        public void onLoadCleared(@Nullable Drawable placeholder) {
+                        }
+                    });
+
+
             //set latlng index ke 0
 //            LatLng latLng = new LatLng(Double.parseDouble(listData.get(0).getLatitude()), Double.parseDouble(listData.get(0).getLongitude()));
             //lalu arahkan zooming ke marker index ke 0
@@ -329,6 +368,17 @@ public class Home extends Fragment {
         });
     }
 
+
+
+
+    private BitmapDescriptor bitmapDescriptor(Context context, int resourceId) {
+        Drawable vectordrawable = ContextCompat.getDrawable(context, resourceId);
+        vectordrawable.setBounds(0, 0, vectordrawable.getIntrinsicWidth(), vectordrawable.getIntrinsicHeight());
+        Bitmap bitmap = Bitmap.createBitmap(vectordrawable.getIntrinsicWidth(), vectordrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        vectordrawable.draw(canvas);
+        return BitmapDescriptorFactory.fromBitmap(bitmap);
+    }
 
 
     private void showDialog(Infrastructure infrastructure) {
@@ -351,7 +401,7 @@ public class Home extends Fragment {
 
 
         dialog.show();
-        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         dialog.getWindow().setGravity(Gravity.BOTTOM);
@@ -359,14 +409,8 @@ public class Home extends Fragment {
     }
 
 
-    private BitmapDescriptor bitmapDescriptor(Context context, int resourceId){
-        Drawable vectordrawable = ContextCompat.getDrawable(context, resourceId);
-        vectordrawable.setBounds(0,0,vectordrawable.getIntrinsicWidth(), vectordrawable.getIntrinsicHeight());
-        Bitmap bitmap = Bitmap.createBitmap(vectordrawable.getIntrinsicWidth(), vectordrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmap);
-        vectordrawable.draw(canvas);
-        return BitmapDescriptorFactory.fromBitmap(bitmap);
-    }
+
+
 
 
     private List<Infrastructure> fetchResults(Response<HomeFeed> response) {

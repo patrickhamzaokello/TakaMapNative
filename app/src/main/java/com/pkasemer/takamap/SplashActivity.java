@@ -37,9 +37,9 @@ public class SplashActivity extends AppCompatActivity {
         topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
         bottomAnim = AnimationUtils.loadAnimation(this, R.anim.splashbottom_animation);
 
-        image = findViewById(R.id.splashimage);
+//        image = findViewById(R.id.splashimage);
 
-        image.setAnimation(topAnim);
+//        image.setAnimation(topAnim);
 
 
 
@@ -59,16 +59,10 @@ public class SplashActivity extends AppCompatActivity {
                     Intent intent = new Intent(SplashActivity.this, OnBoarding.class);
                     startActivity(intent);
                 } else {
-                    Intent intent = new Intent(SplashActivity.this, SignUpOptions.class);
+                    Intent intent = new Intent(SplashActivity.this, RootActivity.class);
                     startActivity(intent);
 
-//                    Pair[] pairs = new Pair[3];
-//                    pairs[0] = new Pair<View, String>(image,"logo_image");
-//                    pairs[1] = new Pair<View, String>(logo,"logo_text");
-//                    pairs[2] = new Pair<View, String>(slogan,"logo_desc");
-//
-//                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(SplashActivity.this, pairs);
-//                    startActivity(intent, options.toBundle());
+
                 }
                 finish();
 

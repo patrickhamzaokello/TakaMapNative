@@ -20,23 +20,25 @@
         android:theme="@style/Theme.TakaMap"
         android:usesCleartextTraffic="true"
         tools:replace="android:icon">
-        <activity android:name="com.pkasemer.takamap.SignUpOptions"></activity>
-        <activity android:name="com.pkasemer.takamap.ManageOrders" />
-
         <activity
-            android:name="com.pkasemer.takamap.RootActivity"
+            android:name=".Pickup"
+            android:exported="false" />
+        <activity android:name=".SignUpOptions" />
+        <activity android:name=".ManageOrders" />
+        <activity
+            android:name=".RootActivity"
             android:exported="true" />
         <activity
-            android:name="com.pkasemer.takamap.RegisterMaterial"
+            android:name=".RegisterMaterial"
             android:exported="true" />
         <activity
-            android:name="com.pkasemer.takamap.LoginMaterial"
+            android:name=".LoginMaterial"
             android:exported="true" />
         <activity
-            android:name="com.pkasemer.takamap.OnBoarding"
+            android:name=".OnBoarding"
             android:exported="true" />
         <activity
-            android:name="com.pkasemer.takamap.SplashActivity"
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -60,7 +62,6 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="@string/default_notification_channel_id" />
-
     </application>
 
 </manifest>

@@ -9,27 +9,28 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="15dp"
             android:orientation="vertical">
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
 
 
                 <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:id="@+id/manageOrders"
-                    android:layout_height="125dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginVertical="10dp"
                     android:layout_weight="1"
                     app:cardBackgroundColor="@color/cards"
                     app:cardCornerRadius="5dp">
@@ -39,7 +40,7 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical"
                         android:gravity="center_vertical"
-                        android:padding="5dp">
+                        android:padding="20dp">
 
 
 
@@ -47,7 +48,6 @@
                             android:id="@+id/wallet_labels"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
                             android:fontFamily="@font/montserrat_bold"
                             android:includeFontPadding="false"
                             android:text="Pick Up"
@@ -61,9 +61,6 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/wallet_labels"
                             android:fontFamily="@font/montserrat"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:layout_marginTop="8dp"
                             android:includeFontPadding="false"
                             android:text="Request for a Trash / Yugi Pick-Up or Collection "
                             android:textColor="@color/carddescript"
@@ -75,9 +72,8 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp"
-                    android:layout_height="125dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     app:cardBackgroundColor="@color/cards"
                     app:cardCornerRadius="5dp"
@@ -89,7 +85,7 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical"
                         android:gravity="center_vertical"
-                        android:padding="5dp">
+                        android:padding="20dp">
 
 
 
@@ -97,7 +93,6 @@
                             android:id="@+id/wallet_label"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
                             android:fontFamily="@font/montserrat_bold"
                             android:includeFontPadding="false"
                             android:text="Report"
@@ -111,9 +106,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/wallet_labels"
                             android:fontFamily="@font/montserrat"
-                            android:layout_gravity="center"
                             android:gravity="center"
-                            android:layout_marginTop="8dp"
                             android:includeFontPadding="false"
                             android:text="Report any Issue about Trash / Yugi"
                             android:textColor="@color/carddescript"

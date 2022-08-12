@@ -40,9 +40,9 @@
     <color name="niceGreen">#15950D</color>
     <color name="niceBlue">#0075D3</color>
     <color name="pendingstatus">#D59F00</color>
-    <color name="cards">#025939</color>
-    <color name="cardtitle">#DAFDBA</color>
-    <color name="carddescript">#DAFDBA</color>
+    <color name="cards">#E6FFF6</color>
+    <color name="cardtitle">#061305</color>
+    <color name="carddescript">#1A3921</color>
 
 
 </resources>

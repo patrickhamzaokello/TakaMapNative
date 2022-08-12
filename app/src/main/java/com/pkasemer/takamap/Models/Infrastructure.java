@@ -10,7 +10,7 @@ public class Infrastructure {
 
     @SerializedName("id")
     @Expose
-    private Integer id;
+    private String id;
     @SerializedName("aim")
     @Expose
     private String aim;
@@ -26,12 +26,15 @@ public class Infrastructure {
     @SerializedName("type")
     @Expose
     private String type;
+    @SerializedName("iconpath")
+    @Expose
+    private String iconpath;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -73,6 +76,14 @@ public class Infrastructure {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getIconpath() {
+        return iconpath;
+    }
+
+    public void setIconpath(String iconpath) {
+        this.iconpath = iconpath;
     }
 
 }
