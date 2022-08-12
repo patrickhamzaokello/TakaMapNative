@@ -422,10 +422,18 @@ public class Home extends Fragment {
         }
 
         MaterialButton cancel = dialog.findViewById(R.id.cancel);
+        MaterialButton apply = dialog.findViewById(R.id.apply_filter);
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
+            }
+        });
+
+        apply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Apply Clicked", Toast.LENGTH_SHORT).show();
             }
         });
 
