@@ -1,0 +1,86 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="20dp"
+    android:paddingVertical="20dp"
+    android:background="@drawable/cornercircle"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+
+        <TextView
+            android:id="@+id/type_lable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:fontFamily="@font/montserrat_bold"
+            android:gravity="left"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/apply_filter"
+            android:includeFontPadding="false"
+            android:text="Infrastructure"
+            android:textColor="#000"
+            android:textSize="20sp" />
+
+
+        <TextView
+            android:id="@+id/type_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/type_lable"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="20dp"
+            android:fontFamily="@font/montserrat"
+            android:gravity="left"
+            android:includeFontPadding="false"
+            android:text="Select type to filter"
+            android:textColor="@color/light_black"
+            android:textSize="18sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cancel"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/apply_filter"
+            android:text="Cancel"
+            android:textColor="@color/purple_500"
+            android:transitionName="account_change"
+            app:strokeColor="@color/purple_500"
+            app:strokeWidth="1dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/apply_filter"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="Apply"
+            android:textColor="@color/white"
+            android:transitionName="account_change"
+            app:backgroundTint="@color/purple_500"
+            app:strokeColor="@color/purple_500"
+            app:strokeWidth="1dp" />
+
+    </RelativeLayout>
+
+
+
+
+
+    <ListView
+        android:id="@+id/list_view_1"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"/>
+
+
+
+
+</LinearLayout>

@@ -23,7 +23,7 @@
             android:padding="5dp">
 
             <Button
-                android:id="@+id/menu_detail_st_cartbtn"
+                android:id="@+id/infrastructure_filter"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_centerInParent="true"

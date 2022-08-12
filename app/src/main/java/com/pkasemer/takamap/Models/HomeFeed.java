@@ -15,6 +15,9 @@ public class HomeFeed {
     @SerializedName("infrastructure")
     @Expose
     private List<Infrastructure> infrastructure = null;
+    @SerializedName("types")
+    @Expose
+    private List<Type> types = null;
     @SerializedName("total_pages")
     @Expose
     private Integer totalPages;
@@ -36,6 +39,14 @@ public class HomeFeed {
 
     public void setInfrastructure(List<Infrastructure> infrastructure) {
         this.infrastructure = infrastructure;
+    }
+
+    public List<Type> getTypes() {
+        return types;
+    }
+
+    public void setTypes(List<Type> types) {
+        this.types = types;
     }
 
     public Integer getTotalPages() {

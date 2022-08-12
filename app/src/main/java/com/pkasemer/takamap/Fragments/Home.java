@@ -22,11 +22,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -57,32 +60,23 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.button.MaterialButton;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageSize;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
+import com.pkasemer.takamap.Adapters.TypeAdapter;
 import com.pkasemer.takamap.Adapters.UserOrdersAdapter;
 import com.pkasemer.takamap.Apis.MovieApi;
 import com.pkasemer.takamap.Apis.MovieService;
-import com.pkasemer.takamap.Dialogs.OrderNotFound;
-import com.pkasemer.takamap.ManageOrders;
+
 import com.pkasemer.takamap.Models.HomeFeed;
 import com.pkasemer.takamap.Models.Infrastructure;
-import com.pkasemer.takamap.Models.UserOrders;
-import com.pkasemer.takamap.Models.UserOrdersResult;
+import com.pkasemer.takamap.Models.Type;
+
 import com.pkasemer.takamap.R;
-import com.pkasemer.takamap.RootActivity;
-import com.pkasemer.takamap.Utils.PaginationScrollListener;
 
-import org.w3c.dom.Text;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeoutException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -111,6 +105,9 @@ public class Home extends Fragment {
     private MovieService movieService;
     private ImageLoader imageLoader;
     List<Infrastructure> all_infrastructures;
+    List<Type> all_typeList;
+
+    Button infrastructure_filter;
 
 
     private LocationListener locationListener = new LocationListener() {
@@ -157,10 +154,15 @@ public class Home extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         movieService = MovieApi.getClient(getContext()).create(MovieService.class);
-
         locationManager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
         initView(view, savedInstanceState);
-
+        infrastructure_filter = view.findViewById(R.id.infrastructure_filter);
+        infrastructure_filter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialogFilter();
+            }
+        });
         loadFirstPage();
         return view;
     }
@@ -408,6 +410,34 @@ public class Home extends Fragment {
 
     }
 
+    private void showDialogFilter(){
+        final Dialog dialog = new Dialog(getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.fragment_show_infras_filters);
+        if(all_typeList != null){
+            TypeAdapter typeAdapter = new TypeAdapter(getContext(), (ArrayList<Type>) all_typeList);
+            Log.e(TAG, "showDialogFilter: "+ all_typeList );
+            ListView listView = (ListView) dialog.findViewById(R.id.list_view_1);
+            listView.setAdapter(typeAdapter);
+        }
+
+        MaterialButton cancel = dialog.findViewById(R.id.cancel);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
+
+
+    }
+
 
 
 
@@ -416,6 +446,7 @@ public class Home extends Fragment {
     private List<Infrastructure> fetchResults(Response<HomeFeed> response) {
         HomeFeed homeFeed = response.body();
         TOTAL_PAGES = homeFeed.getTotalPages();
+        all_typeList = homeFeed.getTypes();
         System.out.println("total pages" + TOTAL_PAGES);
         return homeFeed.getInfrastructure();
     }
