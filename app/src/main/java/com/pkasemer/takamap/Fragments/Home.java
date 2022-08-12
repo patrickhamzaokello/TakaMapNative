@@ -1,15 +1,11 @@
 package com.pkasemer.takamap.Fragments;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -17,20 +13,15 @@ import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,14 +30,8 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.RequestBuilder;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.FutureTarget;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
@@ -62,10 +47,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.button.MaterialButton;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.ImageSize;
-import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 import com.pkasemer.takamap.Adapters.TypeAdapter;
-import com.pkasemer.takamap.Adapters.UserOrdersAdapter;
 import com.pkasemer.takamap.Apis.MovieApi;
 import com.pkasemer.takamap.Apis.MovieService;
 
@@ -74,6 +56,7 @@ import com.pkasemer.takamap.Models.Infrastructure;
 import com.pkasemer.takamap.Models.Type;
 
 import com.pkasemer.takamap.R;
+import com.pkasemer.takamap.Utils.FilterCallBack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,7 +66,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class Home extends Fragment {
+public class Home extends Fragment implements FilterCallBack {
 
     private static final int LOCATION_MIN_UPDATE_TIME = 10;
     private static final int LOCATION_MIN_UPDATE_DISTANCE = 1000;
@@ -106,6 +89,8 @@ public class Home extends Fragment {
     private ImageLoader imageLoader;
     List<Infrastructure> all_infrastructures;
     List<Type> all_typeList;
+    ArrayList<String> filtered_tags = new ArrayList<>();
+
 
     Button infrastructure_filter;
 
@@ -160,7 +145,7 @@ public class Home extends Fragment {
         infrastructure_filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDialogFilter();
+                showDialogFilter(Home.this);
             }
         });
         loadFirstPage();
@@ -371,8 +356,6 @@ public class Home extends Fragment {
     }
 
 
-
-
     private BitmapDescriptor bitmapDescriptor(Context context, int resourceId) {
         Drawable vectordrawable = ContextCompat.getDrawable(context, resourceId);
         vectordrawable.setBounds(0, 0, vectordrawable.getIntrinsicWidth(), vectordrawable.getIntrinsicHeight());
@@ -410,13 +393,14 @@ public class Home extends Fragment {
 
     }
 
-    private void showDialogFilter(){
+
+    private void showDialogFilter(FilterCallBack mcallback) {
         final Dialog dialog = new Dialog(getContext());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.fragment_show_infras_filters);
-        if(all_typeList != null){
-            TypeAdapter typeAdapter = new TypeAdapter(getContext(), (ArrayList<Type>) all_typeList);
-            Log.e(TAG, "showDialogFilter: "+ all_typeList );
+        if (all_typeList != null) {
+            TypeAdapter typeAdapter = new TypeAdapter(getContext(), (ArrayList<Type>) all_typeList, mcallback);
+            Log.e(TAG, "showDialogFilter: " + all_typeList);
             ListView listView = (ListView) dialog.findViewById(R.id.list_view_1);
             listView.setAdapter(typeAdapter);
         }
@@ -442,13 +426,18 @@ public class Home extends Fragment {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         dialog.getWindow().setGravity(Gravity.BOTTOM);
-
-
     }
 
 
-
-
+    @Override
+    public void filterCallback(String name) {
+        if (filtered_tags.contains(name)) {
+            filtered_tags.remove(name);
+        } else {
+            filtered_tags.add(name);
+        }
+        Toast.makeText(getContext(), filtered_tags.toString(), Toast.LENGTH_SHORT).show();
+    }
 
 
     private List<Infrastructure> fetchResults(Response<HomeFeed> response) {
@@ -465,6 +454,5 @@ public class Home extends Fragment {
                 currentPage
         );
     }
-
 
 }
