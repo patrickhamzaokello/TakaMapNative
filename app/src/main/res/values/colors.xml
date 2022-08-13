@@ -25,8 +25,6 @@
     <color name="changebtn">#1A7341</color>
     <color name="order_locationcolor">#238C51</color>
 
-
-
     <color name="mygreen">#064025</color>
     <color name="buttonGreen">#175313</color>
 
@@ -40,9 +38,9 @@
     <color name="niceGreen">#15950D</color>
     <color name="niceBlue">#0075D3</color>
     <color name="pendingstatus">#D59F00</color>
-    <color name="cards">#E6FFF6</color>
-    <color name="cardtitle">#061305</color>
-    <color name="carddescript">#1A3921</color>
+    <color name="cards">#03A64A</color>
+    <color name="cardtitle">#F5FFF4</color>
+    <color name="carddescript">#E4E8E3</color>
 
 
 </resources>

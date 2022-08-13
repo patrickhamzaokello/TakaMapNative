@@ -27,7 +27,7 @@
                 android:fontFamily="@font/montserrat_bold"
                 android:text="Pickup"
                 android:textColor="#000"
-                android:textSize="40sp"
+                android:textSize="30sp"
                 android:includeFontPadding="false"
                 android:transitionName="logo_text"
 
@@ -40,7 +40,7 @@
                 android:fontFamily="@font/montserrat"
                 android:includeFontPadding="false"
                 android:textColor="@color/light_black"
-                android:text="Pickup request form"
+                android:text="fill the form below to make a pickup request."
                 android:textSize="18sp"
                 android:transitionName="logo_desc" />
 

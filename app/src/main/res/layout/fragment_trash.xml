@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="Fragments.Trash">
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+    tools:context="Fragments.Trash"
+    android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,8 +39,6 @@
                         android:gravity="center_vertical"
                         android:padding="20dp">
 
-
-
                         <TextView
                             android:id="@+id/wallet_labels"
                             android:layout_width="wrap_content"
@@ -65,6 +60,20 @@
                             android:text="Request for a Trash / Yugi Pick-Up or Collection "
                             android:textColor="@color/carddescript"
                             android:textSize="12sp" />
+
+
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/request_pickup"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Request Pickup"
+                            android:layout_marginTop="10dp"
+                            android:textColor="@color/white"
+                            android:transitionName="account_change"
+                            app:strokeColor="@color/white"
+                            app:strokeWidth="1dp" />
 
                     </LinearLayout>
 
@@ -112,6 +121,18 @@
                             android:textColor="@color/carddescript"
                             android:textSize="12sp" />
 
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/request_report"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Report"
+                            android:layout_marginTop="10dp"
+                            android:textColor="@color/white"
+                            android:transitionName="account_change"
+                            app:strokeColor="@color/white"
+                            app:strokeWidth="1dp" />
+
                     </LinearLayout>
 
 
@@ -123,4 +144,3 @@
 
 
     </ScrollView>
-</FrameLayout>
