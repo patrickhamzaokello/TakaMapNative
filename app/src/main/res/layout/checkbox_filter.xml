@@ -9,11 +9,22 @@
         android:id="@+id/txtName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/iconImage"
+        android:layout_toLeftOf="@+id/checkBox"
         android:text="Welcome"
         android:textColor="@color/black"
         android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/iconImage"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/ic_fontisto_trash"
+        />
 
     <CheckBox
         android:id="@+id/checkBox"

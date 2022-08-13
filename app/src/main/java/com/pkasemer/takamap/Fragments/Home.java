@@ -425,11 +425,11 @@ public class Home extends Fragment implements FilterCallBack {
         apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Log.e("check", ""+ filtered_infrastructures);
-
                 if(filtered_infrastructures != null && !(filtered_infrastructures.isEmpty())){
                     googleMap.clear();
                     initMarker(filtered_infrastructures);
+                } else {
+                    Toast.makeText(getContext(), "No filter Applied", Toast.LENGTH_SHORT).show();
                 }
                 dialog.dismiss();
 

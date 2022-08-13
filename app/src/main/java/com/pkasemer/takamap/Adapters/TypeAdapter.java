@@ -8,20 +8,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.pkasemer.takamap.Models.Type;
 import com.pkasemer.takamap.R;
 import com.pkasemer.takamap.Utils.FilterCallBack;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class TypeAdapter extends ArrayAdapter<Type> {
     // View lookup cache
     private static class ViewHolder {
         TextView name;
         CheckBox checkBox;
+        ImageView iconImage;
     }
 
     FilterCallBack mCallback;
@@ -45,6 +51,7 @@ public class TypeAdapter extends ArrayAdapter<Type> {
             convertView = inflater.inflate(R.layout.checkbox_filter, parent, false);
             viewHolder.name = (TextView) convertView.findViewById(R.id.txtName);
             viewHolder.checkBox = (CheckBox) convertView.findViewById(R.id.checkBox);
+            viewHolder.iconImage = (ImageView) convertView.findViewById(R.id.iconImage);
             // Cache the viewHolder object inside the fresh view
             convertView.setTag(viewHolder);
         } else {
@@ -60,6 +67,15 @@ public class TypeAdapter extends ArrayAdapter<Type> {
                 mCallback.filterCallback(type.getName());
             }
         });
+        Glide.with(getContext())
+                .applyDefaultRequestOptions(new RequestOptions()
+                        .placeholder(R.drawable.ic_dashicons_trash)
+                        .error(R.drawable.ic_dashicons_trash))
+                .load(type.getIconpath())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)   // cache both original & resized image
+                .centerCrop()
+//                .transition(withCrossFade(factory))
+                .into(viewHolder.iconImage);
         // Return the completed view to render on screen
         return convertView;
     }
