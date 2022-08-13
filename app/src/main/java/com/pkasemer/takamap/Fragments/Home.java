@@ -89,7 +89,8 @@ public class Home extends Fragment implements FilterCallBack {
     private ImageLoader imageLoader;
     List<Infrastructure> all_infrastructures;
     List<Type> all_typeList;
-    ArrayList<String> filtered_tags = new ArrayList<>();
+    ArrayList<String> filtered_tags;
+    ArrayList<Infrastructure> filtered_infrastructures;
 
 
     Button infrastructure_filter;
@@ -305,54 +306,58 @@ public class Home extends Fragment implements FilterCallBack {
     }
 
     private void initMarker(List<Infrastructure> listData) {
-        //iterasi semua data dan tampilkan markernya
-        for (int i = 0; i < listData.size(); i++) {
-            //set latlng nya
-            LatLng location = new LatLng(Double.parseDouble(listData.get(i).getLatitude()), Double.parseDouble(listData.get(i).getLongitude()));
-            //tambahkan markernya
 
-            int finalI = i;
-            Glide.with(this)
-                    .applyDefaultRequestOptions(new RequestOptions()
-                            .override(60, 60)
-                            .placeholder(R.drawable.ic_dashicons_trash)
-                            .error(R.drawable.ic_dashicons_trash))
-                    .asBitmap()
-                    .load(listData.get(i).getIconpath())
-                    .into(new CustomTarget<Bitmap>() {
-                        @Override
-                        public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
-                            googleMap.addMarker(
-                                    new MarkerOptions()
-                                            .position(location)
-                                            .zIndex(finalI)
-                                            .title(listData.get(finalI).getType())
-                                            .icon(BitmapDescriptorFactory.fromBitmap(resource)));
-                        }
+        if(listData != null){
+            //iterasi semua data dan tampilkan markernya
+            for (int i = 0; i < listData.size(); i++) {
+                //set latlng nya
+                LatLng location = new LatLng(Double.parseDouble(listData.get(i).getLatitude()), Double.parseDouble(listData.get(i).getLongitude()));
+                //tambahkan markernya
 
-                        @Override
-                        public void onLoadCleared(@Nullable Drawable placeholder) {
-                        }
-                    });
+                int finalI = i;
+                Glide.with(this)
+                        .applyDefaultRequestOptions(new RequestOptions()
+                                .override(60, 60)
+                                .placeholder(R.drawable.ic_dashicons_trash)
+                                .error(R.drawable.ic_dashicons_trash))
+                        .asBitmap()
+                        .load(listData.get(i).getIconpath())
+                        .into(new CustomTarget<Bitmap>() {
+                            @Override
+                            public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                                googleMap.addMarker(
+                                        new MarkerOptions()
+                                                .position(location)
+                                                .zIndex(finalI)
+                                                .title(listData.get(finalI).getType())
+                                                .icon(BitmapDescriptorFactory.fromBitmap(resource)));
+                            }
+
+                            @Override
+                            public void onLoadCleared(@Nullable Drawable placeholder) {
+                            }
+                        });
 
 
-            //set latlng index ke 0
+                //set latlng index ke 0
 //            LatLng latLng = new LatLng(Double.parseDouble(listData.get(0).getLatitude()), Double.parseDouble(listData.get(0).getLongitude()));
-            //lalu arahkan zooming ke marker index ke 0
+                //lalu arahkan zooming ke marker index ke 0
 //            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latLng.latitude,latLng.longitude), 14.0f));
+            }
+
+            // adding on click listener to marker of google maps.
+            googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                @Override
+                public boolean onMarkerClick(Marker marker) {
+                    // on marker click we are getting the title of our marker
+                    // which is clicked and displaying it in a toast message.
+                    int markerId = (int) marker.getZIndex();
+                    showDialog(listData.get(markerId));
+                    return false;
+                }
+            });
         }
 
-        // adding on click listener to marker of google maps.
-        googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-            @Override
-            public boolean onMarkerClick(Marker marker) {
-                // on marker click we are getting the title of our marker
-                // which is clicked and displaying it in a toast message.
-                int markerId = (int) marker.getZIndex();
-                showDialog(listData.get(markerId));
-                return false;
-            }
-        });
     }
 
 
@@ -396,6 +401,9 @@ public class Home extends Fragment implements FilterCallBack {
 
     private void showDialogFilter(FilterCallBack mcallback) {
         final Dialog dialog = new Dialog(getContext());
+        filtered_tags = new ArrayList<>();
+        filtered_infrastructures = new ArrayList<>();
+
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.fragment_show_infras_filters);
         if (all_typeList != null) {
@@ -417,7 +425,14 @@ public class Home extends Fragment implements FilterCallBack {
         apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Apply Clicked", Toast.LENGTH_SHORT).show();
+//                Log.e("check", ""+ filtered_infrastructures);
+
+                if(filtered_infrastructures != null && !(filtered_infrastructures.isEmpty())){
+                    googleMap.clear();
+                    initMarker(filtered_infrastructures);
+                }
+                dialog.dismiss();
+
             }
         });
 
@@ -436,7 +451,13 @@ public class Home extends Fragment implements FilterCallBack {
         } else {
             filtered_tags.add(name);
         }
-        Toast.makeText(getContext(), filtered_tags.toString(), Toast.LENGTH_SHORT).show();
+
+        for(int i=0; i<all_infrastructures.size(); i++){
+            if(filtered_tags.contains(all_infrastructures.get(i).getType())){
+                filtered_infrastructures.add(all_infrastructures.get(i));
+            }
+
+        }
     }
 
 
