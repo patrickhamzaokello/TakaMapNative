@@ -22,7 +22,7 @@
         android:fontFamily="@font/montserrat_bold"
         android:textSize="30dp"
         android:gravity="center"
-        android:text="Zodongo Foods"
+        android:text="Yugi Map"
         />
 
 
@@ -33,7 +33,7 @@
         android:layout_marginBottom="30dp"
         android:fontFamily="@font/montserrat"
         android:gravity="center"
-        android:text="Fast and Reliable Food &amp; Drinks Delivery Service.  "
+        android:text="Know where to take your trash or request a pick up through our app."
         android:textColor="@color/light_black"
         android:textSize="20dp" />
 
@@ -76,7 +76,7 @@
         android:textSize="12dp"
         android:gravity="center"
         android:fontFamily="@font/montserrat"
-        android:text="By continuing you indicate that you agree to Zodongo Food's  Terms of Service and Privacy Policy"
+        android:text="@string/continue_agree"
         />
     <TextView
         android:layout_marginTop="5dp"
@@ -86,7 +86,7 @@
         android:textSize="12dp"
         android:gravity="center"
         android:fontFamily="@font/montserrat"
-        android:text="Learn more @ zodongofoods.com, 2022"
+        android:text="@string/learnmore"
         />
 
     <TextView

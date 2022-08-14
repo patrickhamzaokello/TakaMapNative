@@ -269,7 +269,7 @@
                 android:textSize="12dp"
                 android:gravity="center"
                 android:fontFamily="@font/montserrat"
-                android:text="By continuing you indicate that you agree to Zodongo Food's  Terms of Service and Privacy Policy"
+                android:text="@string/continue_agree"
                 />
             <TextView
                 android:layout_marginTop="5dp"
@@ -279,7 +279,7 @@
                 android:textSize="12dp"
                 android:gravity="center"
                 android:fontFamily="@font/montserrat"
-                android:text="Learn more @ zodongofoods.com, 2022"
+                android:text="@string/learnmore"
                 />
 
             <TextView

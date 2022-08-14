@@ -43,4 +43,6 @@
     <string name="google_maps_key">AIzaSyAM4ueq-xMmTbdx0YiUXQmga17FTN4an30</string>
     <string name="i_am_here">I am Here</string>
     <string name="provider_failed">Location turned off</string>
+    <string name="learnmore">Learn more @ yugimap.com, 2022</string>
+    <string name="continue_agree">By continuing you indicate that you agree to Yugi Map\'s Terms of Service and Privacy Policy</string>
 </resources>

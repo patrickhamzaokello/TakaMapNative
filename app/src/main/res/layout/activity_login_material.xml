@@ -45,7 +45,7 @@
                 android:fontFamily="@font/montserrat"
                 android:layout_marginTop="5dp"
                 android:includeFontPadding="false"
-                android:text="Sign into your account to continue browsing zodongo foods"
+                android:text="Sign into your account to continue browsing Yugi Map"
                 android:textColor="@color/light_black"
                 android:textSize="18sp"
                 android:transitionName="logo_desc" />
@@ -153,7 +153,7 @@
                 android:layout_marginTop="15dp"
                 android:fontFamily="@font/montserrat"
                 android:gravity="center"
-                android:text="By continuing you indicate that you agree to Zodongo Food's  Terms of Service and Privacy Policy"
+                android:text="@string/continue_agree"
                 android:textColor="@color/light_black"
                 android:textSize="12dp" />
 
@@ -163,7 +163,7 @@
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/montserrat"
                 android:gravity="center"
-                android:text="Learn more @ zodongofoods.com, 2022"
+                android:text="@string/learnmore"
                 android:textColor="@color/light_black"
                 android:textSize="12dp" />
 

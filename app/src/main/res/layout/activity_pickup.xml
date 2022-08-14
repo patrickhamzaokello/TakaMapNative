@@ -27,7 +27,7 @@
                 android:fontFamily="@font/montserrat_bold"
                 android:text="Pickup"
                 android:textColor="#000"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:includeFontPadding="false"
                 android:transitionName="logo_text"
 
@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat"
                 android:includeFontPadding="false"
-                android:textColor="@color/light_black"
+                android:textColor="#9E9E9E"
                 android:text="fill the form below to make a pickup request."
                 android:textSize="18sp"
                 android:transitionName="logo_desc" />
@@ -127,6 +127,34 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/editTextDescription_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="Description"
+                    android:textColorHint="@color/black"
+                    android:transitionName="username_input"
+                    app:boxStrokeColor="@color/black"
+                    app:boxStrokeErrorColor="@color/black"
+                    app:hintTextColor="@color/black">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top|left"
+                        android:inputType="textMultiLine"
+                        android:lines="8"
+                        android:maxLines="10"
+                        android:minLines="4"
+                        android:scrollbars="vertical"
+                        android:textColor="@color/black" />
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
 
                 <Button
                     android:id="@+id/register_btn"
@@ -150,7 +178,7 @@
                 android:textSize="12dp"
                 android:gravity="center"
                 android:fontFamily="@font/montserrat"
-                android:text="By continuing you indicate that you agree to Yugi Maps  Terms of Service and Privacy Policy"
+                android:text="@string/continue_agree"
                 />
             <TextView
                 android:layout_marginTop="5dp"
@@ -160,7 +188,7 @@
                 android:textSize="12dp"
                 android:gravity="center"
                 android:fontFamily="@font/montserrat"
-                android:text="Learn more @ yugimap.com, 2022"
+                android:text="@string/learnmore"
                 />
 
             <TextView
