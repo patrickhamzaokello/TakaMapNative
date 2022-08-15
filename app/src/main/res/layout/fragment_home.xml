@@ -12,7 +12,7 @@
         android:layout_height="60dp"
         android:layout_margin="10dp"
         android:layout_weight="1"
-        app:cardBackgroundColor="@color/white"
+        app:cardBackgroundColor="@color/purple_500"
         app:cardCornerRadius="50dp"
 
         >
@@ -28,7 +28,7 @@
                 android:layout_height="30dp"
                 android:layout_centerInParent="true"
                 android:background="@drawable/custom_filter_btn"
-                android:theme="@style/BlackBtn" />
+                android:theme="@style/WhiteBtn" />
 
         </RelativeLayout>
 

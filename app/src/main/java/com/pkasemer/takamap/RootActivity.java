@@ -1,11 +1,14 @@
 package com.pkasemer.takamap;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -16,18 +19,48 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class RootActivity extends AppCompatActivity {
 
     BottomNavigationView navView;
-
+    private static final int REQUEST_CODE = 12;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_root_activity);
+        permission();
 
+
+        //updating cart counts
+
+    }
+
+    private void permission() {
+        if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(RootActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION}
+                    , REQUEST_CODE);
+        } else {
+            initRootElements();
+
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_CODE) {
+            for (int grant:grantResults ) {
+                if (grant != PackageManager.PERMISSION_GRANTED) {
+                   ActivityCompat.requestPermissions(RootActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}
+                            , REQUEST_CODE);
+                }
+            }
+
+        }
+    }
+
+    private void initRootElements() {
         ActionBar actionBar = getSupportActionBar(); // or getActionBar();
         getSupportActionBar().setTitle("My new title"); // set the top title
         String title = actionBar.getTitle().toString(); // get the title
         actionBar.hide();
-
 
 
         //Initialize Bottom Navigation View.
@@ -43,24 +76,7 @@ public class RootActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.navHostFragment);
         NavigationUI.setupWithNavController(navView, navController);
         navView.getOrCreateBadge(R.id.navigation_cart).setBackgroundColor(getResources().getColor(R.color.sweetRed));
-
-        //updating cart counts
-
     }
-
-
-    public void switchContent(int id, Fragment fragment, String fragmentname) {
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(id, fragment, fragment.toString());
-//        ft.addToBackStack(fragmentname);
-        ft.commit();
-    }
-
-
-
-
-
-
 
 
 }

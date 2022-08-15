@@ -190,7 +190,7 @@ public class Home extends Fragment implements FilterCallBack {
                 googleMap.getUiSettings().setMyLocationButtonEnabled(true);
                 googleMap.getUiSettings().setAllGesturesEnabled(true);
                 googleMap.getUiSettings().setZoomControlsEnabled(true);
-
+//                googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
                 try {
                     // Customise the styling of the base map using a JSON object defined
                     // in a raw resource file.
@@ -214,6 +214,8 @@ public class Home extends Fragment implements FilterCallBack {
             }
         }
     }
+
+
 
     private void getCurrentLocation() {
         if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
@@ -259,7 +261,7 @@ public class Home extends Fragment implements FilterCallBack {
 //            MarkerOptions markerOptions = new MarkerOptions();
 //            markerOptions.position(latLng);
 //            markerOptions.title(title);
-//            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+//            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
 //            googleMap.addMarker(markerOptions);
             googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
             googleMap.animateCamera(CameraUpdateFactory.zoomTo(12.8f));
