@@ -13,12 +13,17 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 
-public interface MovieService {
+public interface TakaApiService {
 
 
     //    get all infrastructure
 //    http://localhost:8080/projects/TakaMap/mobile/api/v1/infrastructure/read.php?page=1
-    @GET("read.php")
+//    @GET("read.php")
+//    Call<HomeFeed> getAllInfrastructure(
+//            @Query("page") int pageIndex
+//    );
+
+    @GET("near_me.php")
     Call<HomeFeed> getAllInfrastructure(
             @Query("page") int pageIndex
     );

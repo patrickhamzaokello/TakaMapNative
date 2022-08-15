@@ -11,8 +11,8 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
-import com.pkasemer.takamap.Apis.MovieApi;
-import com.pkasemer.takamap.Apis.MovieService;
+import com.pkasemer.takamap.Apis.TakaApiBase;
+import com.pkasemer.takamap.Apis.TakaApiService;
 import com.pkasemer.takamap.Models.PickupResponse;
 import com.pkasemer.takamap.Models.RequestPickupModel;
 
@@ -28,7 +28,7 @@ public class Pickup extends AppCompatActivity {
     Button submit_btn;
     ProgressBar progressBar;
     RequestPickupModel requestPickupModel = new RequestPickupModel();
-    private MovieService movieService;
+    private TakaApiService takaApiService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ public class Pickup extends AppCompatActivity {
                 validate_submit_form();
             }
         });
-        movieService = MovieApi.getClient(getApplicationContext()).create(MovieService.class);
+        takaApiService = TakaApiBase.getClient(getApplicationContext()).create(TakaApiService.class);
 
     }
 
@@ -145,7 +145,7 @@ public class Pickup extends AppCompatActivity {
     }
 
     private Call<PickupResponse> postCreateUserAddress() {
-        return movieService.postCreatePickupRequest(requestPickupModel);
+        return takaApiService.postCreatePickupRequest(requestPickupModel);
     }
 
 

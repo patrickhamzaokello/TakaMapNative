@@ -48,8 +48,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.button.MaterialButton;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.pkasemer.takamap.Adapters.TypeAdapter;
-import com.pkasemer.takamap.Apis.MovieApi;
-import com.pkasemer.takamap.Apis.MovieService;
+import com.pkasemer.takamap.Apis.TakaApiBase;
+import com.pkasemer.takamap.Apis.TakaApiService;
 
 import com.pkasemer.takamap.Models.HomeFeed;
 import com.pkasemer.takamap.Models.Infrastructure;
@@ -85,7 +85,7 @@ public class Home extends Fragment implements FilterCallBack {
     private static int TOTAL_PAGES = 5;
     private int currentPage = PAGE_START;
 
-    private MovieService movieService;
+    private TakaApiService takaApiService;
     private ImageLoader imageLoader;
     List<Infrastructure> all_infrastructures;
     List<Type> all_typeList;
@@ -139,7 +139,7 @@ public class Home extends Fragment implements FilterCallBack {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        movieService = MovieApi.getClient(getContext()).create(MovieService.class);
+        takaApiService = TakaApiBase.getClient(getContext()).create(TakaApiService.class);
         locationManager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
         initView(view, savedInstanceState);
         infrastructure_filter = view.findViewById(R.id.infrastructure_filter);
@@ -340,10 +340,10 @@ public class Home extends Fragment implements FilterCallBack {
 
 
                 //set latlng index ke 0
-//            LatLng latLng = new LatLng(Double.parseDouble(listData.get(0).getLatitude()), Double.parseDouble(listData.get(0).getLongitude()));
-                //lalu arahkan zooming ke marker index ke 0
-//            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latLng.latitude,latLng.longitude), 14.0f));
             }
+            LatLng latLng = new LatLng(Double.parseDouble(listData.get(0).getLatitude()), Double.parseDouble(listData.get(0).getLongitude()));
+            //lalu arahkan zooming ke marker index ke 0
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latLng.latitude,latLng.longitude), 15.0f));
 
             // adding on click listener to marker of google maps.
             googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
@@ -471,7 +471,7 @@ public class Home extends Fragment implements FilterCallBack {
 
 
     private Call<HomeFeed> callInfrastructure() {
-        return movieService.getAllInfrastructure(
+        return takaApiService.getAllInfrastructure(
                 currentPage
         );
     }

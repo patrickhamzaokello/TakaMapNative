@@ -20,8 +20,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.pkasemer.takamap.Adapters.UserOrdersAdapter;
-import com.pkasemer.takamap.Apis.MovieApi;
-import com.pkasemer.takamap.Apis.MovieService;
+import com.pkasemer.takamap.Apis.TakaApiBase;
+import com.pkasemer.takamap.Apis.TakaApiService;
 import com.pkasemer.takamap.Dialogs.OrderNotFound;
 import com.pkasemer.takamap.HelperClasses.SharedPrefManager;
 import com.pkasemer.takamap.Models.UserModel;
@@ -60,7 +60,7 @@ public class ManageOrders extends AppCompatActivity implements PaginationAdapter
     private int currentPage = PAGE_START;
     private int customerId;
 
-    private MovieService movieService;
+    private TakaApiService takaApiService;
     private Object PaginationAdapterCallback;
 
     ActionBar actionBar;
@@ -118,7 +118,7 @@ public class ManageOrders extends AppCompatActivity implements PaginationAdapter
         });
 
         //init service and load data
-        movieService = MovieApi.getClient(ManageOrders.this).create(MovieService.class);
+        takaApiService = TakaApiBase.getClient(ManageOrders.this).create(TakaApiService.class);
         btnRetry.setOnClickListener(v -> loadFirstPage());
         swipeRefreshLayout.setOnRefreshListener(this::doRefresh);
 
@@ -246,7 +246,7 @@ public class ManageOrders extends AppCompatActivity implements PaginationAdapter
      * by @{@link PaginationScrollListener} to load next page.
      */
     private Call<UserOrders> callUserOrdersApi() {
-        return movieService.getUserOrders(
+        return takaApiService.getUserOrders(
                 customerId,
                 currentPage
         );
