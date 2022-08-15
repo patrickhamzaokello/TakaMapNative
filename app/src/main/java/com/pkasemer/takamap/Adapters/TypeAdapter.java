@@ -60,7 +60,7 @@ public class TypeAdapter extends ArrayAdapter<Type> {
         }
         // Populate the data from the data object via the viewHolder object
         // into the template view.
-        viewHolder.name.setText(type.getName());
+        viewHolder.name.setText(type.getName()+" ("+type.getTotal()+") ");
         viewHolder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,4 +1,3 @@
-
 package com.pkasemer.takamap.Models;
 
 import javax.annotation.Generated;
@@ -17,6 +16,9 @@ public class Type {
     @SerializedName("iconpath")
     @Expose
     private String iconpath;
+    @SerializedName("total")
+    @Expose
+    private Integer total;
 
     public String getId() {
         return id;
@@ -40,6 +42,14 @@ public class Type {
 
     public void setIconpath(String iconpath) {
         this.iconpath = iconpath;
+    }
+
+    public Integer getTotal() {
+        return total;
+    }
+
+    public void setTotal(Integer total) {
+        this.total = total;
     }
 
 }

@@ -22,6 +22,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -94,6 +95,7 @@ public class Home extends Fragment implements FilterCallBack {
 
 
     Button infrastructure_filter;
+    ProgressBar main_progress;
 
 
     private LocationListener locationListener = new LocationListener() {
@@ -139,6 +141,7 @@ public class Home extends Fragment implements FilterCallBack {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        main_progress = view.findViewById(R.id.main_progress);
         takaApiService = TakaApiBase.getClient(getContext()).create(TakaApiService.class);
         locationManager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
         initView(view, savedInstanceState);
@@ -358,6 +361,8 @@ public class Home extends Fragment implements FilterCallBack {
                     return false;
                 }
             });
+
+            main_progress.setVisibility(View.GONE);
         }
 
     }
