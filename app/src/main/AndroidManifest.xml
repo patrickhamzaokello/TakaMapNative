@@ -33,12 +33,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TakaMap"
         android:usesCleartextTraffic="true"
-        tools:replace="android:icon">
+        tools:replace="android:icon"
+        tools:ignore="UnusedAttribute">
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.pkasemer.takamap.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
         <activity
             android:name=".MakeReport"
-            android:exported="false" />
-        <activity
-            android:name=".Report"
             android:exported="false" />
         <activity
             android:name=".Pickup"

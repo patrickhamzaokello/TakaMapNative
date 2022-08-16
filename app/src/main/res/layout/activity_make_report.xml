@@ -10,25 +10,19 @@
     android:padding="10dp"
     tools:context=".MakeReport">
 
-
-
-        <Button
-            android:id="@+id/btnSelectPhoto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Select Photo" />
-
-    <LinearLayout
+    <ImageView
+        android:id="@+id/viewImage"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="10dp">
+        android:layout_height="300dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/zodongo_user_profile" />
 
-        <ImageView
-            android:id="@+id/viewImage"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/zodongo_user_profile" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/btnSelectPhoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Select Photo" />
+
+
 </LinearLayout>
