@@ -1,5 +1,6 @@
 package com.pkasemer.takamap.Apis;
 
+import com.pkasemer.takamap.Models.FileResponse;
 import com.pkasemer.takamap.Models.HomeFeed;
 import com.pkasemer.takamap.Models.PickupResponse;
 import com.pkasemer.takamap.Models.ReportResponse;
@@ -52,8 +53,8 @@ public interface TakaApiService {
     );
 
     @Multipart
-    @POST("user/updateprofile")
-    Call<ResponseBody> postReport(
+    @POST("RestApi/upload_api.php")
+    Call<FileResponse> postReport(
             @Part("description") RequestBody description,
             @Part MultipartBody.Part file
     );

@@ -34,6 +34,7 @@ import android.widget.Toast;
 
 import com.pkasemer.takamap.Apis.TakaApiBase;
 import com.pkasemer.takamap.Apis.TakaApiService;
+import com.pkasemer.takamap.Models.FileResponse;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -52,8 +53,8 @@ import retrofit2.Response;
 
 public class MakeReport extends AppCompatActivity {
 
-    Button btnSelectPhoto,classifybutton;
-    ImageView image_captured;
+    Button submit_btn;
+    ImageView image_captured, take_picture;
     String currentPhotoPath;
     Uri currentpicURI;
     private TakaApiService takaApiService;
@@ -107,17 +108,17 @@ public class MakeReport extends AppCompatActivity {
 
     private void initViewPager() {
         image_captured = findViewById(R.id.viewImage);
-        btnSelectPhoto = findViewById(R.id.btnSelectPhoto);
-        classifybutton = findViewById(R.id.classifybutton);
+        take_picture = findViewById(R.id.take_picture);
+        submit_btn = findViewById(R.id.submit_btn);
 
-        btnSelectPhoto.setOnClickListener(new View.OnClickListener() {
+        take_picture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dispatchTakePictureIntent();
             }
         });
 
-        classifybutton.setOnClickListener(new View.OnClickListener() {
+        submit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(MakeReport.this, "Upload", Toast.LENGTH_SHORT).show();
@@ -218,11 +219,9 @@ public class MakeReport extends AppCompatActivity {
         RequestBody requestFile =
                 RequestBody.create(MediaType.parse("multipart/form-data"), file);
 
-
-
         // MultipartBody.Part is used to send also the actual file name
         MultipartBody.Part body =
-                MultipartBody.Part.createFormData("picture", file.getName(), requestFile);
+                MultipartBody.Part.createFormData("sendimage", file.getName(), requestFile);
 
         // add another part within the multipart request
         String descriptionString = "hello, this is description speaking";
@@ -231,17 +230,18 @@ public class MakeReport extends AppCompatActivity {
                         okhttp3.MultipartBody.FORM, descriptionString);
 
         // finally, execute the request
-        Call<ResponseBody> call = takaApiService.postReport(description, body);
-        call.enqueue(new Callback<ResponseBody>() {
+        Call<FileResponse> call = takaApiService.postReport(description, body);
+        call.enqueue(new Callback<FileResponse>() {
             @Override
-            public void onResponse(Call<ResponseBody> call,
-                                   Response<ResponseBody> response) {
-                Log.v("Upload", "success");
+            public void onResponse(Call<FileResponse> call,
+                                   Response<FileResponse> response) {
+                FileResponse fileModel = response.body();
+                Toast.makeText(MakeReport.this, fileModel.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Log.e("Upload error:", t.getMessage());
+            public void onFailure(Call<FileResponse> call, Throwable t) {
+                Toast.makeText(MakeReport.this, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
