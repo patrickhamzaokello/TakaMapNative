@@ -30,6 +30,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.pkasemer.takamap.Apis.TakaApiBase;
@@ -57,6 +58,7 @@ public class MakeReport extends AppCompatActivity {
     ImageView image_captured, take_picture;
     String currentPhotoPath;
     Uri currentpicURI;
+    ProgressBar progressBar;
     private TakaApiService takaApiService;
 
     private static final int REQUEST_CODE = 412;
@@ -110,6 +112,8 @@ public class MakeReport extends AppCompatActivity {
         image_captured = findViewById(R.id.viewImage);
         take_picture = findViewById(R.id.take_picture);
         submit_btn = findViewById(R.id.submit_btn);
+        progressBar = findViewById(R.id.main_progress);
+        progressBar.setVisibility(View.GONE);
 
         take_picture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,7 +125,6 @@ public class MakeReport extends AppCompatActivity {
         submit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MakeReport.this, "Upload", Toast.LENGTH_SHORT).show();
                 uploadFile(currentpicURI);
             }
         });
@@ -207,28 +210,18 @@ public class MakeReport extends AppCompatActivity {
 
     private void uploadFile(Uri fileUri) {
 
-        // https://github.com/iPaulPro/aFileChooser/blob/master/aFileChooser/src/com/ipaulpro/afilechooser/utils/FileUtils.java
-        // use the FileUtils to get the actual file by uri
-//        File file = FileUtils.getFile(this, fileUri);
-        // use the FileUtils to get the actual file by uri
-        // create RequestBody instance from file
-
+        progressBar.setVisibility(View.VISIBLE);
 
         //pass it like this
         File file = new File(currentPhotoPath);
-        RequestBody requestFile =
-                RequestBody.create(MediaType.parse("multipart/form-data"), file);
+        RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
 
         // MultipartBody.Part is used to send also the actual file name
-        MultipartBody.Part body =
-                MultipartBody.Part.createFormData("sendimage", file.getName(), requestFile);
+        MultipartBody.Part body = MultipartBody.Part.createFormData("sendimage", file.getName(), requestFile);
 
         // add another part within the multipart request
         String descriptionString = "hello, this is description speaking";
-        RequestBody description =
-                RequestBody.create(
-                        okhttp3.MultipartBody.FORM, descriptionString);
-
+        RequestBody description = RequestBody.create(okhttp3.MultipartBody.FORM, descriptionString);
         // finally, execute the request
         Call<FileResponse> call = takaApiService.postReport(description, body);
         call.enqueue(new Callback<FileResponse>() {
@@ -237,11 +230,18 @@ public class MakeReport extends AppCompatActivity {
                                    Response<FileResponse> response) {
                 FileResponse fileModel = response.body();
                 Toast.makeText(MakeReport.this, fileModel.getMessage(), Toast.LENGTH_SHORT).show();
+
+                if(fileModel.getStatus()){
+                    finish();
+                }
+                progressBar.setVisibility(View.GONE);
+
             }
 
             @Override
             public void onFailure(Call<FileResponse> call, Throwable t) {
-                Toast.makeText(MakeReport.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MakeReport.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                progressBar.setVisibility(View.GONE);
             }
         });
     }
