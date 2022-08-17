@@ -46,4 +46,5 @@
     <string name="learnmore">Learn more @ yugimap.com, 2022</string>
     <string name="continue_agree">By continuing you indicate that you agree to Yugi Map\'s Terms of Service and Privacy Policy</string>
     <string name="fileprovider">com.pkasemer.takamap.fileprovider</string>
+    <string name="internal_storage">internal_storage</string>
 </resources>

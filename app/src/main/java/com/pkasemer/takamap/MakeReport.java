@@ -30,6 +30,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.pkasemer.takamap.Apis.TakaApiBase;
+import com.pkasemer.takamap.Apis.TakaApiService;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -38,11 +42,21 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class MakeReport extends AppCompatActivity {
 
-    Button btnSelectPhoto;
+    Button btnSelectPhoto,classifybutton;
     ImageView image_captured;
     String currentPhotoPath;
+    Uri currentpicURI;
+    private TakaApiService takaApiService;
 
     private static final int REQUEST_CODE = 412;
 
@@ -50,6 +64,7 @@ public class MakeReport extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make_report);
+        takaApiService = TakaApiBase.getClient(getApplicationContext()).create(TakaApiService.class);
         permission();
 
 
@@ -93,11 +108,20 @@ public class MakeReport extends AppCompatActivity {
     private void initViewPager() {
         image_captured = findViewById(R.id.viewImage);
         btnSelectPhoto = findViewById(R.id.btnSelectPhoto);
+        classifybutton = findViewById(R.id.classifybutton);
 
         btnSelectPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dispatchTakePictureIntent();
+            }
+        });
+
+        classifybutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MakeReport.this, "Upload", Toast.LENGTH_SHORT).show();
+                uploadFile(currentpicURI);
             }
         });
 
@@ -136,6 +160,7 @@ public class MakeReport extends AppCompatActivity {
                 Uri photoURI = FileProvider.getUriForFile(this,
                         getString(R.string.fileprovider),
                         photoFile);
+                currentpicURI = photoURI;
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 activityResultLauncher.launch(takePictureIntent);
             }
@@ -176,6 +201,49 @@ public class MakeReport extends AppCompatActivity {
         File f = new File(currentPhotoPath);
         Uri contentUri = Uri.fromFile(f);
         image_captured.setImageBitmap(handleSamplingAndRotationBitmap(this, contentUri));
+    }
+
+
+    private void uploadFile(Uri fileUri) {
+
+        // https://github.com/iPaulPro/aFileChooser/blob/master/aFileChooser/src/com/ipaulpro/afilechooser/utils/FileUtils.java
+        // use the FileUtils to get the actual file by uri
+//        File file = FileUtils.getFile(this, fileUri);
+        // use the FileUtils to get the actual file by uri
+        // create RequestBody instance from file
+
+
+        //pass it like this
+        File file = new File(currentPhotoPath);
+        RequestBody requestFile =
+                RequestBody.create(MediaType.parse("multipart/form-data"), file);
+
+
+
+        // MultipartBody.Part is used to send also the actual file name
+        MultipartBody.Part body =
+                MultipartBody.Part.createFormData("picture", file.getName(), requestFile);
+
+        // add another part within the multipart request
+        String descriptionString = "hello, this is description speaking";
+        RequestBody description =
+                RequestBody.create(
+                        okhttp3.MultipartBody.FORM, descriptionString);
+
+        // finally, execute the request
+        Call<ResponseBody> call = takaApiService.postReport(description, body);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call,
+                                   Response<ResponseBody> response) {
+                Log.v("Upload", "success");
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.e("Upload error:", t.getMessage());
+            }
+        });
     }
 
 
