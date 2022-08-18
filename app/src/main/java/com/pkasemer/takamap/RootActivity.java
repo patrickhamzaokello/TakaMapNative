@@ -57,11 +57,6 @@ public class RootActivity extends AppCompatActivity {
     }
 
     private void initRootElements() {
-        ActionBar actionBar = getSupportActionBar(); // or getActionBar();
-        getSupportActionBar().setTitle("My new title"); // set the top title
-        String title = actionBar.getTitle().toString(); // get the title
-        actionBar.hide();
-
 
         //Initialize Bottom Navigation View.
         navView = findViewById(R.id.bottomNav_view);

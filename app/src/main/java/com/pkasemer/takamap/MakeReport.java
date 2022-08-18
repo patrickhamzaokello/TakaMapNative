@@ -43,6 +43,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -220,10 +221,12 @@ public class MakeReport extends AppCompatActivity {
         MultipartBody.Part body = MultipartBody.Part.createFormData("sendimage", file.getName(), requestFile);
 
         // add another part within the multipart request
-        String descriptionString = "hello, this is description speaking";
-        RequestBody description = RequestBody.create(okhttp3.MultipartBody.FORM, descriptionString);
+        RequestBody title = RequestBody.create(MediaType.parse("text/plain"), "I'm ready");
+        RequestBody userID = RequestBody.create(MediaType.parse("text/plain"), "13");
+        RequestBody description = RequestBody.create(MediaType.parse("text/plain"), "sam smith");
+
         // finally, execute the request
-        Call<FileResponse> call = takaApiService.postReport(description, body);
+        Call<FileResponse> call = takaApiService.postReport(userID,title,description, body);
         call.enqueue(new Callback<FileResponse>() {
             @Override
             public void onResponse(Call<FileResponse> call,
@@ -246,6 +249,9 @@ public class MakeReport extends AppCompatActivity {
         });
     }
 
+    private RequestBody createPartFromString(String stringData) {
+        return RequestBody.create(okhttp3.MultipartBody.FORM, stringData);
+    }
 
 
     /**
