@@ -78,7 +78,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-
                     android:inputType="textPostalAddress" />
 
 
@@ -182,13 +181,15 @@
             app:layout_constraintTop_toBottomOf="@+id/viewImage"
             >
 
+
+
             <Button
                 android:id="@+id/submit_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
-                android:background="#000000"
+                android:background="@drawable/rounded_border_shape"
                 android:text="Submit"
                 android:textColor="#fff"
                 android:transitionName="account_button"

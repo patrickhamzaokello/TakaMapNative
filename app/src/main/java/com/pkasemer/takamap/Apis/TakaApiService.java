@@ -55,7 +55,7 @@ public interface TakaApiService {
     );
 
     @Multipart
-    @POST("RestApi/upload_api.php")
+    @POST("report_case.php")
     Call<FileResponse> postReport(
             @Part("userID") RequestBody userID,
             @Part("title") RequestBody title,
