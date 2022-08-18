@@ -41,6 +41,7 @@
     <color name="cards">#03A64A</color>
     <color name="cardtitle">#F5FFF4</color>
     <color name="carddescript">#E4E8E3</color>
+    <color name="over_all_bg_color">#F1FFFD</color>
 
 
 </resources>

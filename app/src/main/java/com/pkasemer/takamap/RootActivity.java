@@ -70,7 +70,9 @@ public class RootActivity extends AppCompatActivity {
         //Initialize NavController.
         NavController navController = Navigation.findNavController(this, R.id.navHostFragment);
         NavigationUI.setupWithNavController(navView, navController);
-        navView.getOrCreateBadge(R.id.navigation_cart).setBackgroundColor(getResources().getColor(R.color.sweetRed));
+        navView.getOrCreateBadge(R.id.navigation_cart).setBackgroundColor(getResources().getColor(R.color.niceGreen));
+//        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.over_all_bg_color));
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.over_all_bg_color));
     }
 
 

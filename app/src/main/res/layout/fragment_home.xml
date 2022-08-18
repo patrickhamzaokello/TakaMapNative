@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/rootbg"
+    android:background="@color/over_all_bg_color"
     tools:context=".Fragments.Home">
 
     <com.google.android.material.card.MaterialCardView

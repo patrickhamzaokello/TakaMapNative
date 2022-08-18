@@ -4,78 +4,141 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/rootbg"
+    android:background="@color/over_all_bg_color"
     tools:context=".Fragments.Profile"
-
     >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
         android:orientation="vertical">
 
-        <RelativeLayout
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:background="@color/purple_200"
-            android:padding="20dp">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/image_profile_card_view"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_centerVertical="true"
-                android:scaleType="fitXY"
-                app:cardCornerRadius="100dp">
 
-                <ImageView
-                    android:id="@+id/profile_image"
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:id="@+id/manageOrders"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="10dp"
+                android:layout_weight="1"
+                app:cardBackgroundColor="@color/cards"
+                app:cardCornerRadius="5dp">
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/zodongo_user_profile" />
-            </androidx.cardview.widget.CardView>
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    android:padding="20dp">
 
-            <TextView
-                android:id="@+id/full_name"
-                android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/wallet_labels"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:includeFontPadding="false"
+                        android:text="Pick Up"
+                        android:textColor="@color/cardtitle"
+                        android:textSize="20sp" />
+
+
+                    <TextView
+                        android:id="@+id/wallet_descs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/wallet_labels"
+                        android:fontFamily="@font/montserrat"
+                        android:includeFontPadding="false"
+                        android:text="Request for a Trash / Yugi Pick-Up or Collection "
+                        android:textColor="@color/carddescript"
+                        android:textSize="12sp" />
+
+
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/request_pickup"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Request Pickup"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/white"
+                        android:transitionName="account_change"
+                        app:strokeColor="@color/white"
+                        app:strokeWidth="1dp" />
+
+                </LinearLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/image_profile_card_view"
-                android:fontFamily="@font/montserrat_bold"
-                android:includeFontPadding="false"
-                android:text="Patrick Hamza"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:layout_weight="1"
+                app:cardBackgroundColor="@color/cards"
+                app:cardCornerRadius="5dp"
 
-            <TextView
-                android:id="@+id/email_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/full_name"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/image_profile_card_view"
+                >
 
-                android:includeFontPadding="false"
-                android:text="Pkasemer"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/address_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/email_text"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@+id/image_profile_card_view"
-                android:includeFontPadding="false"
-                android:text="Lira, Adyel"
-                android:textColor="@color/white"
-                android:textSize="10sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    android:padding="20dp">
 
 
-        </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/wallet_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:includeFontPadding="false"
+                        android:text="Report"
+                        android:textColor="@color/cardtitle"
+                        android:textSize="20sp" />
+
+
+                    <TextView
+                        android:id="@+id/wallet_credit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/wallet_labels"
+                        android:fontFamily="@font/montserrat"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:text="Report any Issue about Trash / Yugi"
+                        android:textColor="@color/carddescript"
+                        android:textSize="12sp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/request_report"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Report"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/white"
+                        android:transitionName="account_change"
+                        app:strokeColor="@color/white"
+                        app:strokeWidth="1dp" />
+
+                </LinearLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
 
     </LinearLayout>
 
