@@ -6,6 +6,8 @@ import android.content.Context;
 import com.androidnetworking.interceptors.HttpLoggingInterceptor;
 import com.pkasemer.takamap.Utils.NetworkUtil;
 
+import java.util.concurrent.TimeUnit;
+
 import okhttp3.Cache;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -50,6 +52,9 @@ public class TakaApiBase {
                 .Builder()
                 .addNetworkInterceptor(REWRITE_CACHE_CONTROL_INTERCEPTOR)
                 .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                .connectTimeout(60, TimeUnit.SECONDS)
+                .readTimeout(60, TimeUnit.SECONDS)
+                .writeTimeout(60, TimeUnit.SECONDS)
                 .cache(cache)
                 .build();
     }
@@ -61,8 +66,8 @@ public class TakaApiBase {
             retrofit = new Retrofit.Builder()
                     .client(buildClient(context))
                     .addConverterFactory(GsonConverterFactory.create())
-                    .baseUrl("http://192.168.1.118:8080/projects/TakaMap/mobile/api/v1/Requests/")
-//                    .baseUrl("https://yugimap.com/mobile/api/v1/Requests/")
+//                    .baseUrl("http://192.168.1.118:8080/projects/TakaMap/mobile/api/v1/Requests/")
+                    .baseUrl("https://yugimap.com/mobile/api/v1/Requests/")
                     .build();
         }
         return retrofit;

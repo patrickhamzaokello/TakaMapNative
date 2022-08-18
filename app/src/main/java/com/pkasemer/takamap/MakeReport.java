@@ -26,6 +26,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -33,6 +34,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.pkasemer.takamap.Apis.TakaApiBase;
 import com.pkasemer.takamap.Apis.TakaApiService;
 import com.pkasemer.takamap.Models.FileResponse;
@@ -56,6 +58,8 @@ import retrofit2.Response;
 public class MakeReport extends AppCompatActivity {
 
     Button submit_btn;
+    TextInputEditText case_title,case_description;
+
     ImageView image_captured, take_picture;
     String currentPhotoPath;
     Uri currentpicURI;
@@ -112,6 +116,8 @@ public class MakeReport extends AppCompatActivity {
     private void initViewPager() {
         image_captured = findViewById(R.id.viewImage);
         take_picture = findViewById(R.id.take_picture);
+        case_title = findViewById(R.id.case_title);
+        case_description = findViewById(R.id.case_description);
         submit_btn = findViewById(R.id.submit_btn);
         progressBar = findViewById(R.id.main_progress);
         progressBar.setVisibility(View.GONE);
@@ -126,10 +132,72 @@ public class MakeReport extends AppCompatActivity {
         submit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                uploadFile(currentpicURI);
+                uploadFile();
             }
         });
 
+    }
+
+    private void uploadFile() {
+        String case_title_text = case_title.getText().toString().trim();
+        String case_description_text = case_description.getText().toString().trim();
+        progressBar.setVisibility(View.VISIBLE);
+
+        if (TextUtils.isEmpty(case_title_text)) {
+            case_title.setError("Provide Case Title");
+            case_title.requestFocus();
+            progressBar.setVisibility(View.GONE);
+            return;
+        }
+        if (TextUtils.isEmpty(case_description_text)) {
+            case_description.setError("Provide Case Description");
+            case_description.requestFocus();
+            progressBar.setVisibility(View.GONE);
+            return;
+        }
+        if(currentPhotoPath != null && !(currentPhotoPath.isEmpty())){
+            //pass it like this
+            File file = new File(currentPhotoPath);
+//            RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+            RequestBody requestFile = RequestBody.create(MediaType.parse("image/png"), file);
+
+            // MultipartBody.Part is used to send also the actual file name
+            MultipartBody.Part body = MultipartBody.Part.createFormData("sendimage", file.getName(), requestFile);
+
+            // add another part within the multipart request
+            RequestBody title = RequestBody.create(MediaType.parse("text/plain"), case_title_text);
+            RequestBody userID = RequestBody.create(MediaType.parse("text/plain"), "13");
+            RequestBody description = RequestBody.create(MediaType.parse("text/plain"), case_description_text);
+
+            // finally, execute the request
+            Call<FileResponse> call = takaApiService.postReport(userID,title,description, body);
+            call.enqueue(new Callback<FileResponse>() {
+                @Override
+                public void onResponse(Call<FileResponse> call,
+                                       Response<FileResponse> response) {
+                    FileResponse fileModel = response.body();
+                    Toast.makeText(MakeReport.this, fileModel.getMessage(), Toast.LENGTH_SHORT).show();
+
+                    if(fileModel.getStatus()){
+                        finish();
+                    }
+                    progressBar.setVisibility(View.GONE);
+
+                }
+
+                @Override
+                public void onFailure(Call<FileResponse> call, Throwable t) {
+                    Toast.makeText(MakeReport.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                    progressBar.setVisibility(View.GONE);
+                }
+            });
+        } else {
+            Toast.makeText(this, "Take a picture", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
+            return;
+        }
+
+        
     }
 
 
@@ -209,51 +277,9 @@ public class MakeReport extends AppCompatActivity {
     }
 
 
-    private void uploadFile(Uri fileUri) {
+    
 
-        progressBar.setVisibility(View.VISIBLE);
-
-        //pass it like this
-        File file = new File(currentPhotoPath);
-        RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-
-        // MultipartBody.Part is used to send also the actual file name
-        MultipartBody.Part body = MultipartBody.Part.createFormData("sendimage", file.getName(), requestFile);
-
-        // add another part within the multipart request
-        RequestBody title = RequestBody.create(MediaType.parse("text/plain"), "I'm ready");
-        RequestBody userID = RequestBody.create(MediaType.parse("text/plain"), "13");
-        RequestBody description = RequestBody.create(MediaType.parse("text/plain"), "sam smith");
-
-        // finally, execute the request
-        Call<FileResponse> call = takaApiService.postReport(userID,title,description, body);
-        call.enqueue(new Callback<FileResponse>() {
-            @Override
-            public void onResponse(Call<FileResponse> call,
-                                   Response<FileResponse> response) {
-                FileResponse fileModel = response.body();
-                Toast.makeText(MakeReport.this, fileModel.getMessage(), Toast.LENGTH_SHORT).show();
-
-                if(fileModel.getStatus()){
-                    finish();
-                }
-                progressBar.setVisibility(View.GONE);
-
-            }
-
-            @Override
-            public void onFailure(Call<FileResponse> call, Throwable t) {
-                Toast.makeText(MakeReport.this, t.getMessage(), Toast.LENGTH_LONG).show();
-                progressBar.setVisibility(View.GONE);
-            }
-        });
-    }
-
-    private RequestBody createPartFromString(String stringData) {
-        return RequestBody.create(okhttp3.MultipartBody.FORM, stringData);
-    }
-
-
+ 
     /**
      * This method is responsible for solving the rotation issue if exist. Also scale the images to
      * 1024x1024 resolution
