@@ -67,14 +67,27 @@
         <entry key="..\:/Users/jamsp/AndroidStudioProjects/TakaMap/app/src/main/res/layout/activity_root_activity.xml" value="0.22010869565217392" />
         <entry key="..\:/Users/jamsp/AndroidStudioProjects/TakaMap/app/src/main/res/layout/activity_sign_up_options.xml" value="0.2128623188405797" />
         <entry key="..\:/Users/jamsp/AndroidStudioProjects/TakaMap/app/src/main/res/layout/activity_splash_activity.xml" value="0.14945652173913043" />
+        <entry key="..\:/Users/jamsp/AndroidStudioProjects/TakaMap/app/src/main/res/layout/cart_item_design.xml" value="0.10625" />
         <entry key="..\:/Users/jamsp/AndroidStudioProjects/TakaMap/app/src/main/res/layout/checkbox_filter.xml" value="0.4387990762124711" />
         <entry key="..\:/Users/jamsp/AndroidStudioProjects/TakaMap/app/src/main/res/layout/content_main.xml" value="0.22010869565217392" />
+        <entry key="..\:/Users/jamsp/AndroidStudioProjects/TakaMap/app/src/main/res/layout/dialog_change_location.xml" value="0.10625" />
+        <entry key="..\:/Users/jamsp/AndroidStudioProjects/TakaMap/app/src/main/res/layout/dialog_order_confirmation.xml" value="0.10625" />
+        <entry key="..\:/Users/jamsp/AndroidStudioProjects/TakaMap/app/src/main/res/layout/dialog_order_confirmation_btns.xml" value="0.10625" />
+        <entry key="..\:/Users/jamsp/AndroidStudioProjects/TakaMap/app/src/main/res/layout/dialog_order_failed.xml" value="0.10625" />
+        <entry key="..\:/Users/jamsp/AndroidStudioProjects/TakaMap/app/src/main/res/layout/dialog_order_not_found.xml" value="0.10625" />
+        <entry key="..\:/Users/jamsp/AndroidStudioProjects/TakaMap/app/src/main/res/layout/dialog_payment_method.xml" value="0.10625" />
+        <entry key="..\:/Users/jamsp/AndroidStudioProjects/TakaMap/app/src/main/res/layout/dialog_update_app.xml" value="0.10625" />
+        <entry key="..\:/Users/jamsp/AndroidStudioProjects/TakaMap/app/src/main/res/layout/error_layout.xml" value="0.10625" />
         <entry key="..\:/Users/jamsp/AndroidStudioProjects/TakaMap/app/src/main/res/layout/fragment_cart.xml" value="0.18" />
         <entry key="..\:/Users/jamsp/AndroidStudioProjects/TakaMap/app/src/main/res/layout/fragment_home.xml" value="0.2128623188405797" />
-        <entry key="..\:/Users/jamsp/AndroidStudioProjects/TakaMap/app/src/main/res/layout/fragment_profile.xml" value="0.14945652173913043" />
+        <entry key="..\:/Users/jamsp/AndroidStudioProjects/TakaMap/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
         <entry key="..\:/Users/jamsp/AndroidStudioProjects/TakaMap/app/src/main/res/layout/fragment_show_infras_filters.xml" value="0.2128623188405797" />
         <entry key="..\:/Users/jamsp/AndroidStudioProjects/TakaMap/app/src/main/res/layout/fragment_show_round_dialog.xml" value="0.1" />
         <entry key="..\:/Users/jamsp/AndroidStudioProjects/TakaMap/app/src/main/res/layout/fragment_trash.xml" value="0.25" />
+        <entry key="..\:/Users/jamsp/AndroidStudioProjects/TakaMap/app/src/main/res/layout/onboarding_slides_layout.xml" value="0.10625" />
+        <entry key="..\:/Users/jamsp/AndroidStudioProjects/TakaMap/app/src/main/res/layout/order_layout.xml" value="0.10625" />
+        <entry key="..\:/Users/jamsp/AndroidStudioProjects/TakaMap/app/src/main/res/layout/order_recommend_layout.xml" value="0.10625" />
+        <entry key="..\:/Users/jamsp/AndroidStudioProjects/TakaMap/app/src/main/res/layout/pagination_item_progress.xml" value="0.10625" />
         <entry key="..\:/Users/jamsp/AndroidStudioProjects/TakaMap/app/src/main/res/menu/menu_main.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/jamsp/AndroidStudioProjects/TakaMap/app/src/main/res/xml/file_paths.xml" value="0.22447916666666667" />
       </map>
