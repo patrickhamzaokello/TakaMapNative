@@ -1,6 +1,7 @@
 package com.pkasemer.takamap.Fragments;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -64,6 +65,16 @@ public class Profile extends Fragment {
                             }
                         }).show();
 
+            }
+        });
+
+        view.findViewById(R.id.about_us_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String url = "http://www.takamap.com/about.html";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
             }
         });
 

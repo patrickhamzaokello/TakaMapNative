@@ -35,7 +35,7 @@ public class RegisterMaterial extends AppCompatActivity {
     Button callLogIN, register_btn;
     TextInputLayout username_layout, password_layout;
 
-    TextInputEditText inputTextFullname, inputTextUsername, inputTextEmail, inputTextPhone,inputTextUserAddress, inputTextPassword, inputTextConfirmPassword;
+    TextInputEditText inputTextFullname, inputTextUsername, inputTextEmail, inputTextPhone,inputTextPassword, inputTextConfirmPassword;
     RadioGroup radioGroupGender;
 
     @Override
@@ -51,7 +51,6 @@ public class RegisterMaterial extends AppCompatActivity {
             startActivity(new Intent(this, RootActivity.class));
             return;
         }
-
 
         //Hooks
 
@@ -69,7 +68,6 @@ public class RegisterMaterial extends AppCompatActivity {
         inputTextUsername = findViewById(R.id.inputTextUsername);
         inputTextEmail = findViewById(R.id.inputTextEmail);
         inputTextPhone = findViewById(R.id.inputTextPhone);
-        inputTextUserAddress = findViewById(R.id.inputTextUserAddress);
         inputTextPassword = findViewById(R.id.inputTextPassword);
         inputTextConfirmPassword = findViewById(R.id.inputTextConfirmPassword);
 
@@ -110,11 +108,9 @@ public class RegisterMaterial extends AppCompatActivity {
         final String user_name = inputTextUsername.getText().toString().trim();
         final String user_email = inputTextEmail.getText().toString().trim();
         final String user_phone = inputTextPhone.getText().toString().trim();
-        final String location_address  = inputTextUserAddress.getText().toString().trim();
         final String user_password = inputTextPassword.getText().toString().trim();
         final String confirm_password = inputTextConfirmPassword.getText().toString().trim();
 
-//        final String gender = ((RadioButton) findViewById(radioGroupGender.getCheckedRadioButtonId())).getText().toString();
 
 
         //first we will do the validations
@@ -155,12 +151,6 @@ public class RegisterMaterial extends AppCompatActivity {
             return;
         }
 
-        if (TextUtils.isEmpty(location_address)) {
-            inputTextUserAddress.setError("Enter Your Location Address");
-            inputTextUserAddress.requestFocus();
-            return;
-        }
-
         if (!user_password.equals(confirm_password)) {
             inputTextPassword.setError("Password Does not Match");
             inputTextPassword.requestFocus();
@@ -186,7 +176,6 @@ public class RegisterMaterial extends AppCompatActivity {
                 params.put("email", user_email);
                 params.put("user_phone", user_phone);
                 params.put("password", user_password);
-                params.put("location_address", location_address);
 
                 //returing the response
                 return requestHandler.sendPostRequest(URLs.URL_REGISTER, params);

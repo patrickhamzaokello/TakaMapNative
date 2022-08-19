@@ -43,6 +43,7 @@ tools:context=".Fragments.Profile">
             android:layout_toRightOf="@+id/image_profile_card_view"
             android:fontFamily="@font/montserrat_bold"
             android:includeFontPadding="false"
+            android:textAllCaps="true"
             android:text="Patrick Hamza"
             android:textColor="@color/black"
             android:textSize="20sp" />
@@ -64,6 +65,7 @@ tools:context=".Fragments.Profile">
             android:layout_height="wrap_content"
             android:layout_below="@+id/full_name"
             android:layout_marginTop="5dp"
+            android:textAllCaps="false"
             android:layout_toRightOf="@+id/image_profile_card_view"
             android:includeFontPadding="false"
             android:text="pkasemer@gmail.com | 0787250196 "
@@ -81,6 +83,7 @@ tools:context=".Fragments.Profile">
             android:text="Update Info"
             android:layout_marginTop="10dp"
             android:textColor="@color/purple_200"
+            android:visibility="gone"
             android:transitionName="account_change"
             android:textAllCaps="false"
             app:layout_constraintStart_toStartOf="parent"
@@ -148,7 +151,7 @@ tools:context=".Fragments.Profile">
 
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/view_address"
+                    android:id="@+id/about_us_btn"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

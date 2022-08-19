@@ -14,8 +14,10 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.pkasemer.takamap.Apis.TakaApiBase;
 import com.pkasemer.takamap.Apis.TakaApiService;
+import com.pkasemer.takamap.HelperClasses.SharedPrefManager;
 import com.pkasemer.takamap.Models.PickupResponse;
 import com.pkasemer.takamap.Models.RequestPickupModel;
+import com.pkasemer.takamap.Models.UserModel;
 import com.pkasemer.takamap.R;
 
 import java.util.concurrent.TimeoutException;
@@ -43,7 +45,6 @@ public class Trash extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_trash, container, false);
-
         submit_btn = view.findViewById(R.id.submit_btn);
         inputTextFullname = view.findViewById(R.id.inputTextFullname);
         inputTextPhone = view.findViewById(R.id.inputTextPhone);
@@ -98,7 +99,8 @@ public class Trash extends Fragment {
             return;
         }
 
-        requestPickupModel.setUserId("122");
+        UserModel user = SharedPrefManager.getInstance(getContext()).getUser();
+        requestPickupModel.setUserId(String.valueOf(user.getId()));
         requestPickupModel.setFullName(full_name);
         requestPickupModel.setPhoneNumber(phone);
         requestPickupModel.setAddress(address);

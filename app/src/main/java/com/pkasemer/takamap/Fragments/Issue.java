@@ -35,8 +35,10 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.textfield.TextInputEditText;
 import com.pkasemer.takamap.Apis.TakaApiBase;
 import com.pkasemer.takamap.Apis.TakaApiService;
+import com.pkasemer.takamap.HelperClasses.SharedPrefManager;
 import com.pkasemer.takamap.MakeReport;
 import com.pkasemer.takamap.Models.FileResponse;
+import com.pkasemer.takamap.Models.UserModel;
 import com.pkasemer.takamap.R;
 
 import java.io.File;
@@ -161,6 +163,8 @@ public class Issue extends Fragment {
             progressBar.setVisibility(View.GONE);
             return;
         }
+        UserModel user = SharedPrefManager.getInstance(getContext()).getUser();
+
         if(currentPhotoPath != null && !(currentPhotoPath.isEmpty())){
             //pass it like this
             File file = new File(currentPhotoPath);
@@ -172,7 +176,7 @@ public class Issue extends Fragment {
 
             // add another part within the multipart request
             RequestBody title = RequestBody.create(MediaType.parse("text/plain"), case_title_text);
-            RequestBody userID = RequestBody.create(MediaType.parse("text/plain"), "13");
+            RequestBody userID = RequestBody.create(MediaType.parse("text/plain"), String.valueOf(user.getId()));
             RequestBody description = RequestBody.create(MediaType.parse("text/plain"), case_description_text);
 
             // finally, execute the request
