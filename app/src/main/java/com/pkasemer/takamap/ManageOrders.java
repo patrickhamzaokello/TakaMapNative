@@ -69,13 +69,6 @@ public class ManageOrders extends AppCompatActivity implements PaginationAdapter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_orders);
 
-        actionBar = getSupportActionBar(); // or getActionBar();
-        actionBar.setTitle("My Orders");
-        // add back arrow to toolbar
-        if (getSupportActionBar() != null){
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
-        }
 
         rv = findViewById(R.id.main_recycler);
         progressBar = findViewById(R.id.main_progress);

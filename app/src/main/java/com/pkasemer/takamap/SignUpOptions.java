@@ -20,11 +20,6 @@ public class SignUpOptions extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_options);
 
-        ActionBar actionBar = getSupportActionBar(); // or getActionBar();
-        getSupportActionBar().setTitle("Sign Up Options Foods"); // set the top title
-        String title = actionBar.getTitle().toString(); // get the title
-        actionBar.hide();
-
         //if the user is already logged in we will directly start the profile activity
         if (SharedPrefManager.getInstance(this).isLoggedIn()) {
             finish();

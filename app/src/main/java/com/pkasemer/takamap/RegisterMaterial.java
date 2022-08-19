@@ -43,11 +43,6 @@ public class RegisterMaterial extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_register_material);
 
-        ActionBar actionBar = getSupportActionBar(); // or getActionBar();
-        getSupportActionBar().setTitle("My new title"); // set the top title
-        String title = actionBar.getTitle().toString(); // get the title
-        actionBar.hide();
-
         //if the user is already logged in we will directly start the profile activity
         if (SharedPrefManager.getInstance(this).isLoggedIn()) {
             finish();
@@ -233,9 +228,7 @@ public class RegisterMaterial extends AppCompatActivity {
                                 userJson.getString("fullname"),
                                 userJson.getString("username"),
                                 userJson.getString("email"),
-                                userJson.getString("phone"),
-                                userJson.getString("address"),
-                                userJson.getString("profileimage")
+                                userJson.getString("phone")
                         );
 
                         //storing the user in shared preferences

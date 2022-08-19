@@ -35,11 +35,6 @@ public class OnBoarding extends AppCompatActivity {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
             setContentView(R.layout.activity_on_boarding);
 
-            ActionBar actionBar = getSupportActionBar(); // or getActionBar();
-            getSupportActionBar().setTitle("My new title"); // set the top title
-            String title = actionBar.getTitle().toString(); // get the title
-            actionBar.hide();
-
             //Hooks
             viewPager = findViewById(R.id.slider);
             dotsLayout = findViewById(R.id.dots);

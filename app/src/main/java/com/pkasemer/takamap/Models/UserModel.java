@@ -4,16 +4,14 @@ package com.pkasemer.takamap.Models;
 public class UserModel {
 
     private int id;
-    private String fullname, username, email, phone,address, profileimage;
+    private String fullname, username, email, phone;
 
-    public UserModel(int id, String fullname, String username, String email, String phone, String address, String profileimage) {
+    public UserModel(int id, String fullname, String username, String email, String phone) {
         this.id = id;
         this.fullname = fullname;
         this.username = username;
         this.email = email;
         this.phone = phone;
-        this.address = address;
-        this.profileimage = profileimage;
     }
 
     public int getId() {
@@ -56,19 +54,4 @@ public class UserModel {
         this.phone = phone;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getProfileimage() {
-        return profileimage;
-    }
-
-    public void setProfileimage(String profileimage) {
-        this.profileimage = profileimage;
-    }
 }

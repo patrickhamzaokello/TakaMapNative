@@ -12,8 +12,6 @@
     tools:context=".SignUpOptions">
 
 
-
-
     <TextView
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
@@ -22,7 +20,7 @@
         android:fontFamily="@font/montserrat_bold"
         android:textSize="30dp"
         android:gravity="center"
-        android:text="Yugi Map"
+        android:text="Taka Map"
         />
 
 
@@ -99,14 +97,5 @@
         android:fontFamily="@font/montserrat"
         android:text="Powered by PK"
         />
-
-
-
-
-
-
-
-
-
 
 </LinearLayout>

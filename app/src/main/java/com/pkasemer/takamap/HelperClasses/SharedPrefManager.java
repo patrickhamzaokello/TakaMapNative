@@ -16,13 +16,11 @@ import com.pkasemer.takamap.Models.UserModel;
 public class SharedPrefManager {
 
     //the constants
-    private static final String SHARED_PREF_NAME = "simplifiedcodingsharedpref";
+    private static final String SHARED_PREF_NAME = "taka_map_pref";
     private static final String KEY_FULLNAME = "keyfullname";
     private static final String KEY_USERNAME = "keyusername";
     private static final String KEY_EMAIL = "keyemail";
     private static final String KEY_PHONE = "keyphone";
-    private static final String KEY_ADDRESS = "keyaddress";
-    private static final String KEY_PROFILEIMAGE = "keyprofileimage";
     private static final String KEY_ID = "keyid";
 
 
@@ -50,8 +48,6 @@ public class SharedPrefManager {
         editor.putString(KEY_USERNAME, userModel.getUsername());
         editor.putString(KEY_EMAIL, userModel.getEmail());
         editor.putString(KEY_PHONE, userModel.getPhone());
-        editor.putString(KEY_ADDRESS, userModel.getAddress());
-        editor.putString(KEY_PROFILEIMAGE, userModel.getProfileimage());
         editor.apply();
     }
 
@@ -69,9 +65,7 @@ public class SharedPrefManager {
                 sharedPreferences.getString(KEY_FULLNAME, null),
                 sharedPreferences.getString(KEY_USERNAME, null),
                 sharedPreferences.getString(KEY_EMAIL, null),
-                sharedPreferences.getString(KEY_PHONE, null),
-                sharedPreferences.getString(KEY_ADDRESS, null),
-                sharedPreferences.getString(KEY_PROFILEIMAGE, null)
+                sharedPreferences.getString(KEY_PHONE, null)
         );
     }
 

@@ -32,11 +32,6 @@ public class SplashActivity extends AppCompatActivity {
         topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
         bottomAnim = AnimationUtils.loadAnimation(this, R.anim.splashbottom_animation);
 
-//        image = findViewById(R.id.splashimage);
-
-//        image.setAnimation(topAnim);
-
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -44,21 +39,16 @@ public class SplashActivity extends AppCompatActivity {
                 onboarding_sharedPreferences = getSharedPreferences("onBoardingScreen", MODE_PRIVATE);
                 boolean isFirstTime = onboarding_sharedPreferences.getBoolean("firstTime", true);
 
-                Intent intent = new Intent(SplashActivity.this, RootActivity.class);
-                startActivity(intent);
-//                if(isFirstTime){
-//
-//                    SharedPreferences.Editor editor = onboarding_sharedPreferences.edit();
-//                    editor.putBoolean("firstTime", false);
-//                    editor.commit();
-//                    Intent intent = new Intent(SplashActivity.this, OnBoarding.class);
-//                    startActivity(intent);
-//                } else {
-//                    Intent intent = new Intent(SplashActivity.this, RootActivity.class);
-//                    startActivity(intent);
-//
-//
-//                }
+                if(isFirstTime){
+                    SharedPreferences.Editor editor = onboarding_sharedPreferences.edit();
+                    editor.putBoolean("firstTime", false);
+                    editor.commit();
+                    Intent intent = new Intent(SplashActivity.this, OnBoarding.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(SplashActivity.this, SignUpOptions.class);
+                    startActivity(intent);
+                }
                 finish();
 
 
