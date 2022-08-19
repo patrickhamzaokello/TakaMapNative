@@ -25,6 +25,12 @@
         <item name="colorAccent">@color/buttonRed</item>
     </style>
 
+    <style name="Theme.SplashTheme" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/user_bg</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/taka_map_splash</item>
+        <item name="postSplashScreenTheme">@style/Theme.TakaMap</item>
+    </style>
+
 
     <style name="BlackBtn" parent="Theme.AppCompat.Light">
         <item name="colorPrimary">@color/purple_200</item>

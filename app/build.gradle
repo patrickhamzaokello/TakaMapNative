@@ -105,6 +105,10 @@ dependencies {
     //sweet alert library
     implementation 'com.github.f0ris.sweetalert:library:1.5.1'
 
+    //splashscreenapi
+    implementation 'androidx.core:core-splashscreen:1.0.0'
+
+
 
     def lifecycle_version = "2.2.0"
     // ViewModel

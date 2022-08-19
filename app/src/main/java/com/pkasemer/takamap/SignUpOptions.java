@@ -67,9 +67,9 @@ public class SignUpOptions extends AppCompatActivity {
     private void AskPermissions() {
 
         PERMISSIONS = new String[]{
-                Manifest.permission.CAMERA,
                 Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.CAMERA,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
         };
@@ -84,22 +84,22 @@ public class SignUpOptions extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if(requestCode == 1){
-            if(grantResults[0]== PackageManager.PERMISSION_GRANTED){
-                Toast.makeText(this, "CAMERA granted", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "CAMERA denied", Toast.LENGTH_SHORT).show();
-            }
 
-            if(grantResults[1]== PackageManager.PERMISSION_GRANTED){
+
+            if(grantResults[0]== PackageManager.PERMISSION_GRANTED){
                 Toast.makeText(this, "ACCESS_FINE_LOCATION granted", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "ACCESS_FINE_LOCATION denied", Toast.LENGTH_SHORT).show();
             }
-
-            if(grantResults[2]== PackageManager.PERMISSION_GRANTED){
+            if(grantResults[1]== PackageManager.PERMISSION_GRANTED){
                 Toast.makeText(this, "ACCESS_COARSE_LOCATION granted", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "ACCESS_COARSE_LOCATION denied", Toast.LENGTH_SHORT).show();
+            }
+            if(grantResults[2]== PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(this, "CAMERA granted", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "CAMERA denied", Toast.LENGTH_SHORT).show();
             }
             if(grantResults[3]== PackageManager.PERMISSION_GRANTED){
                 Toast.makeText(this, "READ_EXTERNAL_STORAGEgranted", Toast.LENGTH_SHORT).show();
