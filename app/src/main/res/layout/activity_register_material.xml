@@ -24,14 +24,14 @@
                 android:id="@+id/register_welcomeback"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/montserrat_bold"
+                android:includeFontPadding="false"
                 android:text="Welcome"
                 android:textAlignment="center"
-                android:layout_gravity="center_horizontal"
                 android:textColor="@color/gold_on_green"
                 android:textSize="40sp"
-                android:includeFontPadding="false"
                 android:transitionName="logo_text"
 
                 />
@@ -40,12 +40,12 @@
                 android:id="@+id/register_subtext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:fontFamily="@font/montserrat"
                 android:includeFontPadding="false"
-                android:textColor="@color/texton_green"
-                android:textAlignment="center"
-                android:layout_gravity="center_horizontal"
                 android:text="Create An Account to Continue"
+                android:textAlignment="center"
+                android:textColor="@color/texton_green"
                 android:textSize="18sp"
                 android:transitionName="logo_desc" />
 
@@ -66,20 +66,19 @@
                     android:layout_marginTop="5dp"
                     android:hint="Full Name"
                     android:textColorHint="@color/input_hint2"
-                    app:hintTextColor="@color/input_hints"
-                    app:endIconTint="@color/input_hints"
                     android:transitionName="username_input"
                     app:boxStrokeColor="@color/input_colors"
                     app:boxStrokeErrorColor="@color/input_colors"
-                    >
+                    app:endIconTint="@color/input_hints"
+                    app:hintTextColor="@color/input_hints">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/inputTextFullname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:backgroundTint="@color/input_bg"
                         android:inputType="text"
                         android:textColor="@color/input_colors"
-                        android:backgroundTint="@color/input_bg"
 
                         />
 
@@ -94,20 +93,20 @@
                     android:layout_marginTop="5dp"
                     android:hint="Username"
                     android:textColorHint="@color/input_hint2"
-                    app:hintTextColor="@color/input_hints"
-                    app:endIconTint="@color/input_hints"
                     android:transitionName="username_input"
                     app:boxStrokeColor="@color/input_colors"
                     app:boxStrokeErrorColor="@color/input_colors"
-                    app:counterMaxLength="15">
+                    app:counterMaxLength="15"
+                    app:endIconTint="@color/input_hints"
+                    app:hintTextColor="@color/input_hints">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/inputTextUsername"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:backgroundTint="@color/input_bg"
                         android:inputType="text"
                         android:textColor="@color/input_colors"
-                        android:backgroundTint="@color/input_bg"
 
                         />
 
@@ -120,22 +119,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:hint="Email"
                     android:textColorHint="@color/input_hint2"
-                    app:hintTextColor="@color/input_hints"
-                    app:endIconTint="@color/input_hints"
                     android:transitionName="username_input"
                     app:boxStrokeColor="@color/input_colors"
                     app:boxStrokeErrorColor="@color/input_colors"
-                    android:hint="Email">
+                    app:endIconTint="@color/input_hints"
+                    app:hintTextColor="@color/input_hints">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/inputTextEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/input_colors"
                         android:backgroundTint="@color/input_bg"
-
                         android:inputType="textEmailAddress"
+
+                        android:textColor="@color/input_colors"
 
                         />
 
@@ -148,28 +147,26 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:hint="Phone Number"
                     android:textColorHint="@color/input_hint2"
-                    app:hintTextColor="@color/input_hints"
-                    app:endIconTint="@color/input_hints"
                     android:transitionName="username_input"
                     app:boxStrokeColor="@color/input_colors"
                     app:boxStrokeErrorColor="@color/input_colors"
-                    android:hint="Phone Number">
+                    app:endIconTint="@color/input_hints"
+                    app:hintTextColor="@color/input_hints">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/inputTextPhone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/input_colors"
                         android:backgroundTint="@color/input_bg"
+                        android:inputType="phone"
 
 
-                        android:inputType="phone" />
+                        android:textColor="@color/input_colors" />
 
 
                 </com.google.android.material.textfield.TextInputLayout>
-
-
 
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -180,22 +177,21 @@
                     android:layout_marginTop="5dp"
                     android:hint="Password"
                     android:textColorHint="@color/input_hint2"
-                    app:hintTextColor="@color/input_hints"
-                    app:passwordToggleTint="@color/input_hints"
-                    app:endIconTint="@color/input_hints"
                     android:transitionName="password_input"
                     app:boxStrokeColor="@color/input_colors"
                     app:boxStrokeErrorColor="@color/input_colors"
+                    app:endIconTint="@color/input_hints"
+                    app:hintTextColor="@color/input_hints"
                     app:passwordToggleEnabled="true"
-                    >
+                    app:passwordToggleTint="@color/input_hints">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/inputTextPassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:backgroundTint="@color/input_bg"
                         android:inputType="textPassword"
                         android:textColor="@color/input_colors"
-                        android:backgroundTint="@color/input_bg"
 
 
                         />
@@ -211,21 +207,21 @@
                     android:layout_marginVertical="5dp"
                     android:hint="Confirm Password"
                     android:textColorHint="@color/input_hint2"
-                    app:hintTextColor="@color/input_hints"
-                    app:passwordToggleTint="@color/input_hints"
-                    app:endIconTint="@color/input_hints"
                     android:transitionName="password_input"
                     app:boxStrokeColor="@color/input_colors"
                     app:boxStrokeErrorColor="@color/input_colors"
-                    app:passwordToggleEnabled="true">
+                    app:endIconTint="@color/input_hints"
+                    app:hintTextColor="@color/input_hints"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@color/input_hints">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/inputTextConfirmPassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:backgroundTint="@color/input_bg"
                         android:inputType="textPassword"
                         android:textColor="@color/input_colors"
-                        android:backgroundTint="@color/input_bg"
 
 
                         />
@@ -248,15 +244,14 @@
                     />
 
 
-
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/login_screen"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:transitionName="account_change"
                     android:text="Already Registered? Log In"
                     android:textColor="@color/user_bg_not_selected"
+                    android:transitionName="account_change"
                     app:layout_constraintStart_toStartOf="parent"
                     app:strokeColor="@color/user_bg_not_selected"
                     app:strokeWidth="1dp" />

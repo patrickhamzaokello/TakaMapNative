@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    android:background="@drawable/optiontwo"
+    android:background="@color/user_bg"
     android:orientation="vertical"
     android:scaleType="fitXY"
     android:gravity="center_vertical"
@@ -16,7 +16,7 @@
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        android:textColor="@color/gold_on_green"
         android:fontFamily="@font/montserrat_bold"
         android:textSize="30dp"
         android:gravity="center"
@@ -32,7 +32,7 @@
         android:fontFamily="@font/montserrat"
         android:gravity="center"
         android:text="Know where to take your trash or request a pick up through our app."
-        android:textColor="@color/light_black"
+        android:textColor="@color/texton_green"
         android:textSize="20dp" />
 
     <Button
@@ -41,10 +41,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
-        android:background="#000000"
         android:textAllCaps="false"
+        android:backgroundTint="@color/gold_on_green"
         android:text="Login"
-        android:textColor="#fff"
+        android:textColor="#000"
         android:transitionName="account_button"
 
         />
@@ -59,9 +59,9 @@
         android:transitionName="account_change"
         android:text="Sign up with email"
         android:textAllCaps="false"
-        android:textColor="@color/purple_500"
+        android:textColor="@color/user_bg_not_selected"
         app:layout_constraintStart_toStartOf="parent"
-        app:strokeColor="@color/purple_500"
+        app:strokeColor="@color/user_bg_not_selected"
         app:strokeWidth="1dp" />
 
 
@@ -70,7 +70,7 @@
         android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/light_black"
+        android:textColor="@color/texton_green"
         android:textSize="12dp"
         android:gravity="center"
         android:fontFamily="@font/montserrat"
@@ -80,22 +80,12 @@
         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/light_black"
+        android:textColor="#3EA36A"
         android:textSize="12dp"
         android:gravity="center"
         android:fontFamily="@font/montserrat"
         android:text="@string/learnmore"
         />
 
-    <TextView
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/light_black"
-        android:textSize="5dp"
-        android:gravity="center"
-        android:fontFamily="@font/montserrat"
-        android:text="Powered by PK"
-        />
 
 </LinearLayout>

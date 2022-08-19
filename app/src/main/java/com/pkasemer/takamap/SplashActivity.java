@@ -39,16 +39,18 @@ public class SplashActivity extends AppCompatActivity {
                 onboarding_sharedPreferences = getSharedPreferences("onBoardingScreen", MODE_PRIVATE);
                 boolean isFirstTime = onboarding_sharedPreferences.getBoolean("firstTime", true);
 
-                if(isFirstTime){
-                    SharedPreferences.Editor editor = onboarding_sharedPreferences.edit();
-                    editor.putBoolean("firstTime", false);
-                    editor.commit();
-                    Intent intent = new Intent(SplashActivity.this, OnBoarding.class);
-                    startActivity(intent);
-                } else {
-                    Intent intent = new Intent(SplashActivity.this, SignUpOptions.class);
-                    startActivity(intent);
-                }
+//                if(isFirstTime){
+//                    SharedPreferences.Editor editor = onboarding_sharedPreferences.edit();
+//                    editor.putBoolean("firstTime", false);
+//                    editor.commit();
+//                    Intent intent = new Intent(SplashActivity.this, OnBoarding.class);
+//                    startActivity(intent);
+//                } else {
+//                    Intent intent = new Intent(SplashActivity.this, SignUpOptions.class);
+//                    startActivity(intent);
+//                }
+                Intent intent = new Intent(SplashActivity.this, SignUpOptions.class);
+                startActivity(intent);
                 finish();
 
 

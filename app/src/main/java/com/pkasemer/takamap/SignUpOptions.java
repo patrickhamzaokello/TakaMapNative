@@ -2,6 +2,7 @@ package com.pkasemer.takamap;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,7 +20,8 @@ public class SignUpOptions extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_options);
-
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.user_bg));
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.user_bg));
         //if the user is already logged in we will directly start the profile activity
         if (SharedPrefManager.getInstance(this).isLoggedIn()) {
             finish();
