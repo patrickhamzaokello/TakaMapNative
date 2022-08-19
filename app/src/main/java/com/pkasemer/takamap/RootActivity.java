@@ -25,39 +25,6 @@ public class RootActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_root_activity);
-        permission();
-
-
-        //updating cart counts
-
-    }
-
-    private void permission() {
-        if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(RootActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION}
-                    , REQUEST_CODE);
-        } else {
-            initRootElements();
-
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == REQUEST_CODE) {
-            for (int grant:grantResults ) {
-                if (grant != PackageManager.PERMISSION_GRANTED) {
-                   ActivityCompat.requestPermissions(RootActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}
-                            , REQUEST_CODE);
-                }
-            }
-
-        }
-    }
-
-    private void initRootElements() {
-
         //Initialize Bottom Navigation View.
         navView = findViewById(R.id.bottomNav_view);
 
@@ -71,8 +38,8 @@ public class RootActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.navHostFragment);
         NavigationUI.setupWithNavController(navView, navController);
         navView.getOrCreateBadge(R.id.navigation_cart).setBackgroundColor(getResources().getColor(R.color.niceGreen));
-//        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.over_all_bg_color));
-        getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.over_all_bg_color));
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.user_bg));
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.user_bg));
     }
 
 

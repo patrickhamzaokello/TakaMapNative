@@ -31,7 +31,7 @@
         app:itemTextColor="@color/navigationcolors"
         app:labelVisibilityMode="labeled"
         android:paddingTop="8dp"
-        android:background="@color/over_all_bg_color"
+        android:background="@color/user_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
