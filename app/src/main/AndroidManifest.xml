@@ -21,7 +21,6 @@
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
@@ -51,7 +50,6 @@
             android:name=".Pickup"
             android:exported="false" />
         <activity android:name=".SignUpOptions" />
-        <activity android:name=".ManageOrders" />
         <activity
             android:name=".RootActivity"
             android:exported="true" />
@@ -61,9 +59,7 @@
         <activity
             android:name=".LoginMaterial"
             android:exported="true" />
-        <activity
-            android:name=".OnBoarding"
-            android:exported="true" />
+
         <activity
             android:name=".SplashActivity"
             android:exported="true">
