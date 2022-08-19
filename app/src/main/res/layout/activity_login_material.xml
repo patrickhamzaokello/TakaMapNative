@@ -4,10 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_centerVertical="true"
     android:layout_centerInParent="true"
-    android:background="@drawable/logincover"
+    android:background="@color/user_bg"
     tools:context=".LoginMaterial">
 
     <RelativeLayout
@@ -16,7 +16,6 @@
         android:layout_marginTop="40dp"
         android:layout_centerVertical="true"
         android:layout_centerInParent="true"
-
         >
 
         <LinearLayout
@@ -30,9 +29,11 @@
                 android:id="@+id/login_welcomeback"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:fontFamily="@font/montserrat_bold"
                 android:text="Login"
-                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:textColor="@color/gold_on_green"
                 android:textSize="35sp"
                 android:transitionName="logo_text"
 
@@ -45,8 +46,10 @@
                 android:fontFamily="@font/montserrat"
                 android:layout_marginTop="5dp"
                 android:includeFontPadding="false"
-                android:text="Sign into your account to continue browsing Yugi Map"
-                android:textColor="@color/light_black"
+                android:layout_gravity="center_horizontal"
+                android:textAlignment="center"
+                android:text="Sign into your account to access Taka Map"
+                android:textColor="@color/texton_green"
                 android:textSize="18sp"
                 android:transitionName="logo_desc" />
 
@@ -61,72 +64,69 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/login_username"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Username / Email"
-                    android:textColorHint="@color/black"
+                    android:textColorHint="@color/input_hint2"
+                    app:hintTextColor="@color/input_hints"
+                    app:endIconTint="@color/input_hints"
                     android:transitionName="username_input"
-                    app:boxStrokeColor="@color/black"
-                    app:boxStrokeErrorColor="@color/purple_500"
-                    app:hintTextColor="@color/black">
+                    app:boxStrokeColor="@color/input_colors"
+                    app:boxStrokeErrorColor="@color/input_colors">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/inputTextUsername"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:backgroundTint="@color/input_bg"
                         android:inputType="textAutoComplete"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/input_colors" />
 
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/login_password"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:hint="Password"
-                    android:textColorHint="@color/black"
+                    android:textColorHint="@color/input_hint2"
+                    app:hintTextColor="@color/input_hints"
+                    app:passwordToggleTint="@color/input_hints"
+                    app:endIconTint="@color/input_hints"
                     android:transitionName="password_input"
-                    app:boxStrokeColor="@color/black"
-                    app:boxStrokeErrorColor="@color/purple_500"
-                    app:endIconTint="@color/black"
-                    app:hintTextColor="@color/black"
+                    app:boxStrokeColor="@color/input_colors"
+                    app:boxStrokeErrorColor="@color/input_colors"
                     app:passwordToggleEnabled="true"
-                    app:passwordToggleTint="@color/black">
+                    >
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/inputTextPassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:backgroundTint="@color/input_bg"
                         android:inputType="textPassword"
-                        android:textColor="@color/black"
-                        app:endIconTint="@color/black"
+                        android:textColor="@color/input_colors"
+                        app:endIconTint="@color/input_colors"
 
                         />
 
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:background="#00000000"
-                    android:text="Forgot Password"
-                    android:textColor="#757575" />
 
                 <Button
                     android:id="@+id/login_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="50dp"
                     android:layout_marginBottom="5dp"
-                    android:background="#000000"
+                    android:backgroundTint="@color/gold_on_green"
                     android:text="Log In"
-                    android:textColor="#fff"
+                    android:textColor="#000"
                     android:transitionName="account_button"
 
                     />
@@ -138,10 +138,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="NEW USER? SIGN UP"
-                    android:textColor="@color/purple_500"
+                    android:textColor="@color/user_bg_not_selected"
                     android:transitionName="account_change"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:strokeColor="@color/purple_500"
+                    app:strokeColor="@color/user_bg_not_selected"
                     app:strokeWidth="1dp" />
 
 
@@ -154,7 +154,7 @@
                 android:fontFamily="@font/montserrat"
                 android:gravity="center"
                 android:text="@string/continue_agree"
-                android:textColor="@color/light_black"
+                android:textColor="@color/texton_green"
                 android:textSize="12dp" />
 
             <TextView
@@ -164,7 +164,7 @@
                 android:fontFamily="@font/montserrat"
                 android:gravity="center"
                 android:text="@string/learnmore"
-                android:textColor="@color/light_black"
+                android:textColor="#3EA36A"
                 android:textSize="12dp" />
 
             <TextView
@@ -175,7 +175,7 @@
                 android:fontFamily="@font/montserrat"
                 android:gravity="center"
                 android:text="Powered by PK"
-                android:textColor="@color/light_black"
+                android:textColor="@color/text_on_green"
                 android:textSize="5dp" />
 
         </LinearLayout>

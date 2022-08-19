@@ -43,8 +43,8 @@
     <string name="google_maps_key">AIzaSyAM4ueq-xMmTbdx0YiUXQmga17FTN4an30</string>
     <string name="i_am_here">I am Here</string>
     <string name="provider_failed">Location turned off</string>
-    <string name="learnmore">Learn more @ yugimap.com, 2022</string>
-    <string name="continue_agree">By continuing you indicate that you agree to Yugi Map\'s Terms of Service and Privacy Policy</string>
+    <string name="learnmore">Learn more @ takamap.com, 2022</string>
+    <string name="continue_agree">By continuing you indicate that you agree to Taka Map\'s Terms of Service and Privacy Policy</string>
     <string name="fileprovider">com.pkasemer.takamap.fileprovider</string>
     <string name="internal_storage">internal_storage</string>
 </resources>

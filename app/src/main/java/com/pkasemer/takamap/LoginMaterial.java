@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -43,7 +44,7 @@ public class LoginMaterial extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_login_material);
-
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.user_bg));
 
         //if the user is already logged in we will directly start the profile activity
         if (SharedPrefManager.getInstance(this).isLoggedIn()) {
@@ -90,8 +91,8 @@ public class LoginMaterial extends AppCompatActivity {
 
     private void userLogin() {
         //first getting the values
-        final String username = inputTextUsername.getText().toString();
-        final String password = inputTextPassword.getText().toString();
+        final String username = inputTextUsername.getText().toString().trim();
+        final String password = inputTextPassword.getText().toString().trim();
 
         //validating inputs
         if (TextUtils.isEmpty(username)) {

@@ -42,6 +42,14 @@
     <color name="cardtitle">#F5FFF4</color>
     <color name="carddescript">#E4E8E3</color>
     <color name="over_all_bg_color">#F1FFFD</color>
+    <color name="gold_on_green">#F2CB05</color>
+    <color name="input_colors">#F6E590</color>
+    <color name="input_bg">#115A48</color>
+    <color name="text_on_green">#FF03A64A</color>
+    <color name="input_hints">#3EA36A</color>
+    <color name="input_hint2">#FFDEFFDD</color>
+    <color name="user_bg">#0d4a3a</color>
+    <color name="user_bg_not_selected">#3EA36A</color>
 
 
 </resources>
