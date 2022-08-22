@@ -17,13 +17,21 @@
         android:id="@+id/navigation_cart"
         android:name="com.pkasemer.takamap.Fragments.Issue"
         android:label="@string/title_Cart"
-        tools:layout="@layout/fragment_cart" />
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_navigation_cart_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_search"
         android:name="com.pkasemer.takamap.Fragments.Trash"
         android:label="@string/title_search"
-        tools:layout="@layout/fragment_trash" />
+        tools:layout="@layout/fragment_trash" >
+        <action
+            android:id="@+id/action_navigation_search_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_profile"

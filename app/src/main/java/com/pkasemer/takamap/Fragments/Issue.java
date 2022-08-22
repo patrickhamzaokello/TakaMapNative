@@ -31,6 +31,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.exifinterface.media.ExifInterface;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.pkasemer.takamap.Apis.TakaApiBase;
@@ -189,7 +190,7 @@ public class Issue extends Fragment {
                     Toast.makeText(getActivity(), fileModel.getMessage(), Toast.LENGTH_SHORT).show();
 
                     if(fileModel.getStatus()){
-                        Toast.makeText(getActivity(), "Report submitted Successfully", Toast.LENGTH_SHORT).show();
+                        Navigation.findNavController(getActivity(), R.id.navHostFragment).navigate(R.id.action_navigation_cart_to_navigation_home);
                     }
                     progressBar.setVisibility(View.GONE);
 

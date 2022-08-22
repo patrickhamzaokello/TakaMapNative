@@ -10,6 +10,8 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
+
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.pkasemer.takamap.Apis.TakaApiBase;
@@ -121,6 +123,8 @@ public class Trash extends Fragment {
 
                         progressBar.setVisibility(View.GONE);
                         Toast.makeText(getContext(), "Pickup Request Submitted", Toast.LENGTH_SHORT).show();
+                        Navigation.findNavController(getActivity(), R.id.navHostFragment).navigate(R.id.action_navigation_search_to_navigation_home);
+
 
                     } else {
                         submit_btn.setEnabled(true);

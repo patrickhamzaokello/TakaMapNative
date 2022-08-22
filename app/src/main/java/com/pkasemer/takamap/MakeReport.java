@@ -11,6 +11,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.exifinterface.media.ExifInterface;
+import androidx.navigation.Navigation;
 
 import android.Manifest;
 import android.content.ContentValues;
@@ -176,12 +177,13 @@ public class MakeReport extends AppCompatActivity {
                 public void onResponse(Call<FileResponse> call,
                                        Response<FileResponse> response) {
                     FileResponse fileModel = response.body();
-                    Toast.makeText(MakeReport.this, fileModel.getMessage(), Toast.LENGTH_SHORT).show();
 
                     if(fileModel.getStatus()){
-                        finish();
+                        Toast.makeText(MakeReport.this, fileModel.getMessage(), Toast.LENGTH_SHORT).show();
                     }
+                    Log.d("rev", "onResponse: " + fileModel.getStatus());
                     progressBar.setVisibility(View.GONE);
+
 
                 }
 
