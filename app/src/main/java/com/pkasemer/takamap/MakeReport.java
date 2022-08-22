@@ -268,7 +268,6 @@ public class MakeReport extends AppCompatActivity {
         // Decode the image file into a Bitmap sized to fill the View
         bmOptions.inJustDecodeBounds = false;
         bmOptions.inSampleSize = scaleFactor;
-        bmOptions.inPurgeable = true;
 
 //        Bitmap bitmap = BitmapFactory.decodeFile(currentPhotoPath, bmOptions);
         File f = new File(currentPhotoPath);
@@ -291,8 +290,8 @@ public class MakeReport extends AppCompatActivity {
      */
     public static Bitmap handleSamplingAndRotationBitmap(Context context, Uri selectedImage)
             throws IOException {
-        int MAX_HEIGHT = 1024;
-        int MAX_WIDTH = 1024;
+        int MAX_HEIGHT = 500;
+        int MAX_WIDTH = 500;
 
         // First decode with inJustDecodeBounds=true to check dimensions
         final BitmapFactory.Options options = new BitmapFactory.Options();
