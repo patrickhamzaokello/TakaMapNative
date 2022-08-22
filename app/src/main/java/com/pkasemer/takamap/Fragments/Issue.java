@@ -37,7 +37,6 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.pkasemer.takamap.Apis.TakaApiBase;
 import com.pkasemer.takamap.Apis.TakaApiService;
 import com.pkasemer.takamap.HelperClasses.SharedPrefManager;
-import com.pkasemer.takamap.MakeReport;
 import com.pkasemer.takamap.Models.FileResponse;
 import com.pkasemer.takamap.Models.UserModel;
 import com.pkasemer.takamap.R;
@@ -277,7 +276,6 @@ public class Issue extends Fragment {
         // Decode the image file into a Bitmap sized to fill the View
         bmOptions.inJustDecodeBounds = false;
         bmOptions.inSampleSize = scaleFactor;
-        bmOptions.inPurgeable = true;
 
 //        Bitmap bitmap = BitmapFactory.decodeFile(currentPhotoPath, bmOptions);
         File f = new File(currentPhotoPath);
@@ -296,8 +294,8 @@ public class Issue extends Fragment {
      */
     public static Bitmap handleSamplingAndRotationBitmap(Context context, Uri selectedImage)
             throws IOException {
-        int MAX_HEIGHT = 1024;
-        int MAX_WIDTH = 1024;
+        int MAX_HEIGHT = 500;
+        int MAX_WIDTH = 500;
 
         // First decode with inJustDecodeBounds=true to check dimensions
         final BitmapFactory.Options options = new BitmapFactory.Options();
