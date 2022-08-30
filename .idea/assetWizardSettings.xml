@@ -93,7 +93,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users\jamsp\Downloads\Logo-02 (2) 2.png" />
+                                                <entry key="imagePath" value="C:\Users\jamsp\Downloads\Logo-05 2 (1).png" />
                                                 <entry key="scalingPercent" value="81" />
                                                 <entry key="trimmed" value="true" />
                                               </map>
@@ -130,7 +130,7 @@
                                   <option name="values">
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
-                                      <entry key="backgroundColor" value="ffffff" />
+                                      <entry key="backgroundColor" value="024f17" />
                                     </map>
                                   </option>
                                 </PersistentState>

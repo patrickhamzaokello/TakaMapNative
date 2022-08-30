@@ -67,7 +67,8 @@ public class TakaApiBase {
                     .client(buildClient(context))
                     .addConverterFactory(GsonConverterFactory.create())
 //                    .baseUrl("http://192.168.0.123:8080/projects/TakaMap/mobile/api/v1/Requests/")
-                    .baseUrl("https://yugimap.com/mobile/api/v1/Requests/")
+//                    .baseUrl("https://yugimap.com/mobile/api/v1/Requests/")
+                    .baseUrl("https://mobile.takamap.com/api/v1/Requests/")
                     .build();
         }
         return retrofit;
